@@ -78,14 +78,38 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Social Media Links"
-        name: "social_links"
+      - label: "Global Settings & Calendar"
+        name: "global_settings"
         file: "config/_default/params.toml"
         fields:
-          - label: "Social Media Platforms"
+          - label: "Social Media Channels"
             name: "social"
             widget: "list"
+            summary: "{{name}}"
             fields:
-              - {label: "Platform Name", name: "name", widget: "string", hint: "e.g. Facebook, Instagram"}
-              - {label: "Icon Key", name: "icon", widget: "string", hint: "e.g. facebook, instagram, bluesky, youtube"}
+              - {label: "Platform Name", name: "name", widget: "string", hint: "e.g. Facebook"}
+              - {label: "Icon Key", name: "icon", widget: "string", hint: "e.g. facebook"}
               - {label: "URL", name: "link", widget: "string"}
+
+          - label: "Universal Events Calendar"
+            name: "calendar_config"
+            widget: "object"
+            fields:
+              - label: "Calendar Provider"
+                name: "calendar_provider"
+                widget: "select"
+                options: ["google", "outlook", "apple", "custom"]
+                default: "google"
+              - label: "Public Calendar URL / ID"
+                name: "calendar_id"
+                widget: "string"
+                hint: "For Google: your email. For Apple/Outlook: the public .ics link."
+              - label: "Default View Style"
+                name: "calendar_view"
+                widget: "select"
+                options: [{label: "Month Grid", value: "dayGridMonth"}, {label: "Agenda List", value: "listMonth"}]
+                default: "dayGridMonth"
+              - label: "Display Calendar on Website?"
+                name: "show_calendar"
+                widget: "boolean"
+                default: true

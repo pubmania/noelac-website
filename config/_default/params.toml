@@ -1,50 +1,59 @@
 colorScheme = "noelac"
 
 [homepage]
-  layout = "hero"
-  # Ensures Hero style is used
-  homepageImage = "hero-winner.jpg"
-  showRecentPosts = true
+layout = "hero"
+homepageImage = "hero-winner.jpg"
+showRecentPosts = true
 
 [header]
-  layout = "fixed"
+layout = "fixed"
 
 [footer]
-  showThemeAttribution = false
-  showSocial = true
+showThemeAttribution = false
+showSocial = true
+calendar_provider = "google"
+calendar_id = ""
+calendar_view = "dayGridMonth"
+show_calendar = true
 
 [article]
-  showTableOfContents = false
-  smartTOC = true
-  showDate = false
-  showDateUpdated = false
-  showWordCount = false
-  showReadingTime = false
-  showAuthor = false
-  showTags = false
+showTableOfContents = false
+smartTOC = true
+showDate = false
+showDateUpdated = false
+showWordCount = false
+showReadingTime = false
+showAuthor = false
+showTags = false
 
 [search]
-  showExcerpt = true
-  showSubTitle = true
-  showResultCount = true
-  showClearButton = true
+showExcerpt = true
+showSubTitle = true
+showResultCount = true
+showClearButton = true
 
 [[social]]
-  name = "facebook"
-  icon = "facebook"
-  link = "https://www.facebook.com/lhasaclub"
+name = "facebook"
+icon = "facebook"
+link = "https://www.facebook.com/lhasaclub"
 
 [[social]]
-  name = "instagram"
-  icon = "instagram"
-  link = "https://instagram.com/noelac"
+name = "instagram"
+icon = "instagram"
+link = "https://instagram.com/noelac"
 
 [[social]]
-  name = "bluesky"
-  icon = "bluesky"
-  link = "https://bsky.app"
+name = "bluesky"
+icon = "bluesky"
+link = "https://bsky.app"
 
 [[social]]
-  name = "youtube"
-  icon = "youtube"
-  link = "https://youtube.com"
+name = "youtube"
+icon = "youtube"
+link = "https://youtube.com"
+
+[calendar_config]
+calendar_provider = "google"
+calendar_view = "listMonth"
+show_calendar = true
+calendar_id = "en.uk#holiday@group.v.calendar.google.com"
