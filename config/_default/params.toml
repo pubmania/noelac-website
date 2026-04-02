@@ -11,6 +11,7 @@ colorScheme = "noelac"
 
 [footer]
   showThemeAttribution = false
+  showSocial = true
 
 [article]
   showTableOfContents = false
@@ -27,3 +28,23 @@ colorScheme = "noelac"
   showSubTitle = true
   showResultCount = true
   showClearButton = true
+
+[[social]]
+  name = "facebook"
+  icon = "facebook"
+  link = "https://www.facebook.com/lhasaclub"
+
+[[social]]
+  name = "instagram"
+  icon = "instagram"
+  link = "https://instagram.com/noelac"
+
+[[social]]
+  name = "bluesky"
+  icon = "bluesky"
+  link = "https://bsky.app"
+
+[[social]]
+  name = "youtube"
+  icon = "youtube"
+  link = "https://youtube.com"

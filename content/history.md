@@ -11,7 +11,9 @@ Because they were considered bringers of good luck, they were rarely sold and us
 > <strong>Interested in Joining?</strong> We welcome new members!  
 > Whether you are a seasoned exhibitor or a first-time pet owner, NOELAC offers a wealth of knowledge and a friendly community. 
 
-{{< button href="https://www.google.com" target="_blank" >}}Join Now{{< /button >}}
+<div class="noelac-btn-row">
+  {{< button href="/join/" target="_blank" color="green" >}}Join Now{{< /button >}}
+</div>
 
 > [!NOTE]
 > This page is currently under construction.

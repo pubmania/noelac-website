@@ -1,6 +1,32 @@
+{{- $outline := .Get "outline" | default "false" -}}
+{{- $size := .Get "size" | default "normal" -}}
+{{- $color := .Get "color" | default "primary" -}}
+{{- $class := "noelac-btn" -}}
+
+{{/* Handle Outline Style */}}
+{{- if or (eq $outline "true") (eq $outline true) (eq $outline "yes") -}}
+  {{- $class = printf "%s %s" $class "noelac-btn-outline" -}}
+{{- else -}}
+  {{/* Handle Color Palette */}}
+  {{- if eq $color "metallic" -}}
+    {{- $class = printf "%s %s" $class "noelac-btn-metallic" -}}
+  {{- else if eq $color "green" -}}
+    {{- $class = printf "%s %s" $class "noelac-btn-green" -}}
+  {{- else -}}
+    {{- $class = printf "%s %s" $class "noelac-btn-primary" -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Handle Size */}}
+{{- if eq $size "large" -}}
+  {{- $class = printf "%s %s" $class "noelac-btn-lg" -}}
+{{- else if eq $size "small" -}}
+  {{- $class = printf "%s %s" $class "noelac-btn-sm" -}}
+{{- end -}}
+
 <a
-  class="!rounded-md bg-primary-600 px-4 py-2 !text-white !no-underline hover:!bg-primary-500 dark:bg-primary-800 dark:hover:!bg-primary-700"
-  {{ with .Get "href" }}href="{{ . }}"{{ end }}
+  class="{{ $class }}"
+  {{ with .Get "href" }}href="{{ . | relURL }}"{{ end }}
   {{ with .Get "target" }}target="{{ . }}"{{ end }}
   {{ with .Get "rel" }}rel="{{ . }}"{{ end }}
   role="button">

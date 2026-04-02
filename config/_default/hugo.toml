@@ -9,3 +9,8 @@ title = "North of England Lhasa Apso Club"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
