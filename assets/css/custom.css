@@ -280,52 +280,31 @@ article.prose .prose-invert p,
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* 11. MOBILE NAVIGATION FIX (Light Mode Visibility) */
-/* Targets the full-screen mobile menu overlay specifically to override the white-on-white text issue. */
-#mobile-menu-wrapper,
-#mobile-menu,
-header [role="dialog"] {
-  background-color: #fdf5e6 !important; /* Brand Cream Background */
+/* 11. MOBILE NAVIGATION BRUTE-FORCE FIX */
+
+/* Target any fixed-position overlay that appears on mobile */
+.fixed.inset-0.z-50, 
+.fixed.inset-0.z-100,
+[role="dialog"],
+#mobile-menu-wrapper {
+  background-color: #fdf5e6 !important; /* Force Cream Background */
 }
 
-/* Force links in the mobile overlay to dark for contrast */
-#mobile-menu-wrapper a,
-#mobile-menu-wrapper span,
-header [role="dialog"] a,
-header [role="dialog"] span {
-  color: #1a1a1a !important; /* Dark Grey/Black text */
+/* Force ALL text and icons inside that overlay to be Dark */
+.fixed.inset-0.z-50 a,
+.fixed.inset-0.z-50 span,
+.fixed.inset-0.z-50 button,
+.fixed.inset-0.z-50 svg,
+[role="dialog"] a,
+[role="dialog"] span,
+[role="dialog"] button,
+[role="dialog"] svg {
+  color: #1a1a1a !important; /* Force Black/Dark Grey Text */
+  fill: #1a1a1a !important;
 }
 
-/* Ensure icons (Close X, etc.) are visible in the mobile menu */
-#mobile-menu-wrapper svg,
-header [role="dialog"] svg {
-  color: rgb(var(--color-primary-600)) !important; /* Brand Gold/Orange icons */
-}
-
-/* Profile placeholders & Committee Info */
-.profile-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(var(--color-neutral-200));
-  color: rgb(var(--color-neutral-500));
-  border-radius: 50%;
-}
-
-.committee-info .name {
-  margin-top: 0 !important;
-  margin-bottom: 0.25rem !important;
-  font-size: 1.25rem;
+/* Ensure the 'Close' button specifically is visible and Gold */
+.fixed.inset-0.z-50 button svg,
+[role="dialog"] button svg {
   color: rgb(var(--color-primary-600)) !important;
-}
-
-.committee-info .role {
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: rgb(var(--color-neutral-500));
-  margin: 0 !important;
 }
