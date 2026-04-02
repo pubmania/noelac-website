@@ -1,0 +1,22 @@
+<div class="committee-grid not-prose">
+  {{ range sort (where .Site.RegularPages "Section" "committee") ".Params.weight" "asc" }}
+  <article class="committee-card">
+    <div class="profile-frame">
+      {{ if .Params.image }}
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="profile-photo shadow-lg">
+      {{ else }}
+        <div class="profile-placeholder shadow-lg">
+          <span class="text-3xl font-bold">{{ substr .Title 0 1 }}</span>
+        </div>
+      {{ end }}
+    </div>
+    <div class="committee-info">
+      <h3 class="name">{{ .Title }}</h3>
+      <p class="role">{{ .Params.role }}</p>
+      <div class="bio text-sm mt-3 text-neutral-600 dark:text-neutral-400">
+        {{ .Content }}
+      </div>
+    </div>
+  </article>
+  {{ end }}
+</div>

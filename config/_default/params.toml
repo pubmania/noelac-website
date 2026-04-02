@@ -1,0 +1,29 @@
+colorScheme = "noelac"
+
+[homepage]
+  layout = "hero"
+  # Ensures Hero style is used
+  homepageImage = "hero-winner.jpg"
+  showRecentPosts = true
+
+[header]
+  layout = "fixed"
+
+[footer]
+  showThemeAttribution = false
+
+[article]
+  showTableOfContents = false
+  smartTOC = true
+  showDate = false
+  showDateUpdated = false
+  showWordCount = false
+  showReadingTime = false
+  showAuthor = false
+  showTags = false
+
+[search]
+  showExcerpt = true
+  showSubTitle = true
+  showResultCount = true
+  showClearButton = true

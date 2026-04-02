@@ -1,0 +1,310 @@
+/* 1. CUSTOM TYPOGRAPHY (Locally Hosted) */
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+/* 2. FUTURE-PROOF LAYOUT EXPANSION */
+/* Stretches the standard reading column to utilize available wide-screen real estate securely. */
+.prose,
+.max-w-prose {
+  max-width: 1200px !important;
+}
+
+/* 3. BREEDER CARD COMPONENT */
+.breeder-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .breeder-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .breeder-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.breeder-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  background-color: #ffffff;
+}
+
+.dark .breeder-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgb(var(--color-primary-600));
+}
+
+.breeder-header-standard {
+  background-color: rgb(var(--color-primary-600));
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .breeder-header-standard {
+  background-color: rgb(var(--color-primary-600));
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.breeder-header-highlight {
+  background-color: #40a302;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.breeder-badge {
+  background-color: #ffffff;
+  color: #65d81d;
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.breeder-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.breeder-footer {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+  color: #80796b;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #f9fafb;
+}
+
+.dark .breeder-footer {
+  background-color: rgb(var(--color-neutral-900));
+  border-top-color: rgba(255, 255, 255, 0.05);
+  color: #9ca3af;
+}
+
+/* 4. DEFAULT BUTTON COMPONENTS */
+body .prose a[role="button"],
+body #main-content a[role="button"],
+article a[role="button"],
+a[role="button"] * {
+  color: #ffffff !important;
+}
+
+/* 5. TOP NAVIGATION HEADER (Orange Theme) */
+.fixed.inset-x-0.z-100 {
+  background-color: rgb(var(--color-primary-600)) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force all header text, links, and SVG icons to pure white */
+.fixed.inset-x-0.z-100 a,
+.fixed.inset-x-0.z-100 span,
+.fixed.inset-x-0.z-100 svg,
+.fixed.inset-x-0.z-100 label {
+  color: #ffffff !important;
+}
+
+.fixed.inset-x-0.z-100 svg path {
+  fill: currentColor;
+}
+
+/* Strip Blowfish native backdrop blur off the header so solid color punches through */
+#menu-blur {
+  opacity: 0 !important;
+  backdrop-filter: none !important;
+}
+
+/* Override dropdown background to NOELAC Orange to fit the branding */
+.menuhide>div {
+  background-color: rgb(var(--color-primary-600)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dropdown link hover effect (Slightly darker orange for contrast) */
+.menuhide>div a:hover {
+  background-color: rgb(var(--color-primary-700)) !important;
+  border-radius: 0.25rem !important;
+}
+
+/* 6. CONTENT TYPOGRAPHY (NOELAC Orange) */
+/* We target h1-h4 specifically in standard articles (which lack the .prose class) 
+   and in breeder cards to make them the brand Orange. */
+article:not(.prose) h1,
+article:not(.prose) h2,
+article:not(.prose) h3,
+article:not(.prose) h4,
+header h1:not(.text-neutral-200),
+header h2:not(.text-neutral-200),
+.breeder-card h2,
+.breeder-card h3 {
+  color: rgb(var(--color-primary-600)) !important;
+}
+
+/* 7. ADMONITION (ALERT) BOXES */
+/* Fix: Ensure text in blocks like [!tip] or [!todo] remains visible in Light Mode */
+.admonition-content,
+.admonition-content p,
+.admonition-content span {
+  color: inherit !important;
+}
+
+/* 8. HERO TITLE OVERRIDE (WHITE) */
+/* On the homepage hero (identified by article.prose), we force the text to be White
+   so it stands out against the dark background image. */
+article.prose h1,
+article.prose .prose-invert p,
+.text-neutral-200,
+.text-neutral-400 {
+  color: #ffffff !important;
+}
+
+/* 9. COMMITTEE PROFILE CARDS */
+.committee-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .committee-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .committee-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.committee-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.committee-card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-frame {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  border: 4px solid rgb(var(--color-primary-600));
+  overflow: hidden;
+  padding: 4px;
+  background-color: #ffffff;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 !important;
+}
+
+/* 10. ADVANCED AUTO-GALLERY (Modal & 1:1 Grid) */
+.gallery-zoom-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: -0.5rem;
+  margin-top: 2rem !important;
+}
+
+.gallery-zoom-item {
+  width: 50%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .gallery-zoom-item {
+    width: 33.333%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-zoom-item {
+    width: 25%;
+  }
+}
+
+.gallery-zoom-item img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 0.75rem !important;
+  cursor: zoom-in !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease !important;
+  margin: 0 !important;
+}
+
+.gallery-zoom-item img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.profile-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(var(--color-neutral-200));
+  color: rgb(var(--color-neutral-500));
+  border-radius: 50%;
+}
+
+.committee-info .name {
+  margin-top: 0 !important;
+  margin-bottom: 0.25rem !important;
+  font-size: 1.25rem;
+  color: rgb(var(--color-primary-600)) !important;
+}
+
+.committee-info .role {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgb(var(--color-neutral-500));
+  margin: 0 !important;
+}

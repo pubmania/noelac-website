@@ -1,0 +1,42 @@
+{{ $dir := .Get "dir" }}
+{{ $images := "" }}
+
+{{ if $dir }}
+  {{ $images = (resources.Match (printf "%s/*" $dir)) }}
+{{ else }}
+  {{ $images = .Page.Resources.ByType "image" }}
+{{ end }}
+
+<div class="pswp-gallery gallery-zoom-grid not-prose" id="gallery-{{ .Ordinal }}">
+  {{ range $images }}
+    <div class="gallery-zoom-item">
+      <a href="{{ .RelPermalink }}" 
+         data-pswp-width="{{ .Width }}" 
+         data-pswp-height="{{ .Height }}" 
+         target="_blank"
+         class="block overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        {{ $thumbnail := .Fill "800x800 Center" }}
+        <img 
+          src="{{ $thumbnail.RelPermalink }}" 
+          alt="{{ .Name }}" 
+          loading="lazy"
+          class="w-full h-full object-cover nozoom"
+        >
+      </a>
+    </div>
+  {{ end }}
+</div>
+
+{{ if not (.Page.Scratch.Get "pswp_init") }}
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css">
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.2/dist/photoswipe-lightbox.esm.js';
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.pswp-gallery',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.esm.js')
+    });
+    lightbox.init();
+  </script>
+  {{ .Page.Scratch.Set "pswp_init" true }}
+{{ end }}

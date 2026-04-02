@@ -1,0 +1,10 @@
+# Hugo build output
+public/
+resources/_gen/
+.hugo_buildcfg.json
+
+# Local development
+node_modules/
+.DS_Store
+Thumbs.db
+hugo_stats.json

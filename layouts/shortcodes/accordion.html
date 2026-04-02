@@ -1,0 +1,6 @@
+<details class="bg-neutral-50 dark:bg-neutral-800 rounded-md mb-4 border border-neutral-200 dark:border-neutral-700">
+  <summary class="font-bold p-4 cursor-pointer outline-none">{{ .Get "title" }}</summary>
+  <div class="px-4 pb-4">
+    {{ .Inner | markdownify }}
+  </div>
+</details>

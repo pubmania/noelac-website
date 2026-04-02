@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: noelac-admin/website
+  branch: main
+  
+local_backend: true
+publish_mode: editorial_workflow
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "breeders"
+    label: "Breeders"
+    folder: "content/breeders"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Kennel Name (Affix)", name: "title", widget: "string"}
+      - {label: "Owner Name", name: "owner", widget: "string"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "Phone", name: "phone", widget: "string", required: false}
+      - {label: "Puppies Available?", name: "puppies_available", widget: "boolean", default: false, required: false}
+      - label: "Number of Puppies"
+        name: "puppies_count"
+        widget: "number"
+        required: false
+        min: 1
+        value_type: "int"
+        hint: "Leave blank if no puppies are available."
+      - {label: "Additional Notes", name: "body", widget: "markdown", required: false}
+  - name: "news"
+    label: "News"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "gallery_links"
+    label: "Gallery"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Static Pages"
+    folder: "content"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "committee"
+    label: "Committee Members"
+    folder: "content/committee"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} - {{role}}"
+    fields:
+      - {label: "Full Name", name: "title", widget: "string"}
+      - {label: "Role", name: "role", widget: "string", hint: "e.g. Chairperson, Secretary, Treasurer"}
+      - {label: "Profile Photo", name: "image", widget: "image", required: false}
+      - {label: "Bio / Description", name: "body", widget: "markdown", required: false}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}

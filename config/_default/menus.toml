@@ -1,0 +1,112 @@
+[[main]]
+  name = "The Breed"
+  identifier = "breed"
+  weight = 20
+
+[[main]]
+  name = "Standard"
+  url = "/breed-standard/"
+  parent = "breed"
+  weight = 1
+
+[[main]]
+  name = "Grooming"
+  url = "/grooming/"
+  parent = "breed"
+  weight = 2
+
+[[main]]
+  name = "History"
+  url = "/history/"
+  parent = "breed"
+  weight = 3
+
+[[main]]
+  name = "Health"
+  url = "/health/"
+  parent = "breed"
+  weight = 4
+
+[[main]]
+  name = "News"
+  url = "/blog/"
+  weight = 25
+
+[[main]]
+  name = "Gallery"
+  url = "/gallery/"
+  weight = 30
+
+[[main]]
+  name = "Community"
+  identifier = "community"
+  weight = 40
+
+[[main]]
+  name = "Breeders"
+  url = "/breeders/"
+  parent = "community"
+  weight = 1
+
+[[main]]
+  name = "Member's Lounge"
+  url = "/lounge/"
+  parent = "community"
+  weight = 2
+
+[[main]]
+  name = "Rescue"
+  url = "/rescue/"
+  parent = "community"
+  weight = 3
+
+[[main]]
+  name = "Shows"
+  url = "/calendar/"
+  weight = 50
+
+[[main]]
+  name = "Judges"
+  url = "/education/"
+  weight = 60
+
+[[main]]
+  name = "Club Info"
+  identifier = "club"
+  weight = 70
+
+[[main]]
+  name = "About"
+  url = "/about/"
+  parent = "club"
+  weight = 1
+
+[[main]]
+  name = "Timeline"
+  url = "/timeline/"
+  parent = "club"
+  weight = 2
+
+[[main]]
+  name = "Membership"
+  url = "/join/"
+  parent = "club"
+  weight = 3
+
+[[main]]
+  name = "Code of Ethics"
+  url = "/ethics/"
+  parent = "club"
+  weight = 4
+
+[[main]]
+  name = "FAQs"
+  url = "/faq/"
+  parent = "club"
+  weight = 5
+
+[[main]]
+  name = "Roadmap"
+  url = "/roadmap/"
+  parent = "club"
+  weight = 6
