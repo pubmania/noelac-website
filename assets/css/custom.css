@@ -1,3 +1,9 @@
+/* ============================================================
+   NOELAC OFFICIAL STYLESHEET
+   Project: North of England Lhasa Apso Club
+   Theme: Blowfish (Hugo)
+   ============================================================ */
+
 /* 1. CUSTOM TYPOGRAPHY (Locally Hosted) */
 @font-face {
   font-family: 'Outfit';
@@ -12,7 +18,6 @@ html {
 }
 
 /* 2. FUTURE-PROOF LAYOUT EXPANSION */
-/* Stretches the standard reading column to utilize available wide-screen real estate securely. */
 .prose,
 .max-w-prose {
   max-width: 1200px !important;
@@ -116,13 +121,13 @@ a[role="button"] * {
   color: #ffffff !important;
 }
 
-/* 5. TOP NAVIGATION HEADER (Orange Theme) */
+/* 5. TOP NAVIGATION HEADER (Orange/Gold Theme) */
 .fixed.inset-x-0.z-100 {
   background-color: rgb(var(--color-primary-600)) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Force all header text, links, and SVG icons to pure white */
+/* Force header desktop text to white */
 .fixed.inset-x-0.z-100 a,
 .fixed.inset-x-0.z-100 span,
 .fixed.inset-x-0.z-100 svg,
@@ -134,13 +139,12 @@ a[role="button"] * {
   fill: currentColor;
 }
 
-/* Strip Blowfish native backdrop blur off the header so solid color punches through */
 #menu-blur {
   opacity: 0 !important;
   backdrop-filter: none !important;
 }
 
-/* Override dropdown background to NOELAC Orange to fit the branding */
+/* Dropdowns */
 .menuhide>div {
   background-color: rgb(var(--color-primary-600)) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -148,15 +152,12 @@ a[role="button"] * {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Dropdown link hover effect (Slightly darker orange for contrast) */
 .menuhide>div a:hover {
   background-color: rgb(var(--color-primary-700)) !important;
   border-radius: 0.25rem !important;
 }
 
 /* 6. CONTENT TYPOGRAPHY (NOELAC Orange) */
-/* We target h1-h4 specifically in standard articles (which lack the .prose class) 
-   and in breeder cards to make them the brand Orange. */
 article:not(.prose) h1,
 article:not(.prose) h2,
 article:not(.prose) h3,
@@ -169,7 +170,6 @@ header h2:not(.text-neutral-200),
 }
 
 /* 7. ADMONITION (ALERT) BOXES */
-/* Fix: Ensure text in blocks like [!tip] or [!todo] remains visible in Light Mode */
 .admonition-content,
 .admonition-content p,
 .admonition-content span {
@@ -177,8 +177,6 @@ header h2:not(.text-neutral-200),
 }
 
 /* 8. HERO TITLE OVERRIDE (WHITE) */
-/* On the homepage hero (identified by article.prose), we force the text to be White
-   so it stands out against the dark background image. */
 article.prose h1,
 article.prose .prose-invert p,
 .text-neutral-200,
@@ -282,6 +280,29 @@ article.prose .prose-invert p,
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
+/* 11. MOBILE NAVIGATION FIX (Light Mode Visibility) */
+/* Targets the full-screen mobile menu overlay specifically to override the white-on-white text issue. */
+#mobile-menu-wrapper,
+#mobile-menu,
+header [role="dialog"] {
+  background-color: #fdf5e6 !important; /* Brand Cream Background */
+}
+
+/* Force links in the mobile overlay to dark for contrast */
+#mobile-menu-wrapper a,
+#mobile-menu-wrapper span,
+header [role="dialog"] a,
+header [role="dialog"] span {
+  color: #1a1a1a !important; /* Dark Grey/Black text */
+}
+
+/* Ensure icons (Close X, etc.) are visible in the mobile menu */
+#mobile-menu-wrapper svg,
+header [role="dialog"] svg {
+  color: rgb(var(--color-primary-600)) !important; /* Brand Gold/Orange icons */
+}
+
+/* Profile placeholders & Committee Info */
 .profile-placeholder {
   width: 100%;
   height: 100%;
