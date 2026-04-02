@@ -280,30 +280,44 @@ article.prose .prose-invert p,
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* 11. MOBILE NAVIGATION BRUTE-FORCE FIX */
+/* 11. MOBILE NAVIGATION - THE BALANCED FIX */
 
-/* Target any fixed-position overlay that appears on mobile */
-.fixed.inset-0.z-50, 
-.fixed.inset-0.z-100,
-[role="dialog"],
-#mobile-menu-wrapper {
-  background-color: #fdf5e6 !important; /* Force Cream Background */
+/* LIGHT MODE ONLY: Force Cream Background and Dark Text on Mobile Overlays */
+html:not(.dark) .fixed.inset-0.z-50, 
+html:not(.dark) .fixed.inset-0.z-100,
+html:not(.dark) [role="dialog"],
+html:not(.dark) #mobile-menu-wrapper {
+  background-color: #fdf5e6 !important; 
 }
 
-/* Force ALL text and icons inside that overlay to be Dark */
-.fixed.inset-0.z-50 a,
-.fixed.inset-0.z-50 span,
-.fixed.inset-0.z-50 button,
-.fixed.inset-0.z-50 svg,
-[role="dialog"] a,
-[role="dialog"] span,
-[role="dialog"] button,
-[role="dialog"] svg {
-  color: #1a1a1a !important; /* Force Black/Dark Grey Text */
+html:not(.dark) .fixed.inset-0.z-50 a,
+html:not(.dark) .fixed.inset-0.z-50 span,
+html:not(.dark) .fixed.inset-0.z-50 button,
+html:not(.dark) .fixed.inset-0.z-50 svg,
+html:not(.dark) [role="dialog"] a,
+html:not(.dark) [role="dialog"] span,
+html:not(.dark) [role="dialog"] button,
+html:not(.dark) [role="dialog"] svg {
+  color: #1a1a1a !important; 
   fill: #1a1a1a !important;
 }
 
-/* Ensure the 'Close' button specifically is visible and Gold */
+/* DARK MODE ONLY: Ensure the Mobile Overlay is Black/Deep Neutral */
+html.dark .fixed.inset-0.z-50, 
+html.dark .fixed.inset-0.z-100,
+html.dark [role="dialog"],
+html.dark #mobile-menu-wrapper {
+  background-color: #111111 !important; /* Deep Black for Dark Mode */
+}
+
+html.dark .fixed.inset-0.z-50 a,
+html.dark [role="dialog"] a,
+html.dark .fixed.inset-0.z-50 span,
+html.dark [role="dialog"] span {
+  color: #ffffff !important; /* Pure White text for Dark Mode */
+}
+
+/* UNIVERSAL: Ensure the 'Close' (X) button is always the Brand Gold/Orange */
 .fixed.inset-0.z-50 button svg,
 [role="dialog"] button svg {
   color: rgb(var(--color-primary-600)) !important;
