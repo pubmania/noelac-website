@@ -1,10 +1,10 @@
 ---
-title: "Lhasa Apso Breed Standard"
+title: Lhasa Apso Breed Standard
 showTableOfContents: true
-type: "page"
+type: page
 ---
 
-**The Kennel Club (UK) Standard**
+**The Royal Kennel Club (UK) Standard**
 
 > A Breed Standard is the guideline describing the ideal characteristics, temperament, and appearance of a breed, ensuring it remains fit for function.
 
