@@ -1,6 +1,7 @@
 ---
 title: Glyn Lawson
 role: The Bone Collector
+image: /uploads/7336.png
 weight: 10
 ---
 * *Official Role:* Treasurer
