@@ -3,9 +3,13 @@ backend:
   repo: pubmania/noelac-website
   branch: main
   base_url: https://black-mud-f151.mr-ankitmittal.workers.dev
+
+site_url: https://noelac-website.pages.dev
+display_url: https://noelac-website.pages.dev
+logo_url: /logo.png
   
 local_backend: true
-publish_mode: editorial_workflow
+publish_mode: simple #editorial_workflow
 media_folder: "static/uploads"
 public_folder: "/uploads"
 
@@ -113,3 +117,19 @@ collections:
                 name: "show_calendar"
                 widget: "boolean"
                 default: true
+
+      - label: "Lounge Intro"
+        name: "lounge_intro"
+        file: "content/lounge/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Introduction", name: "body", widget: "markdown"}
+
+  - name: "lounge"
+    label: "The Lounge (Posts)"
+    folder: "content/lounge"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
