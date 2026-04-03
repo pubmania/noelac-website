@@ -1,5 +1,5 @@
 ---
-title: P One
+title: Ida Watts
 role: Grand Sentinel
 image: /uploads/7400.png
 weight: 1
