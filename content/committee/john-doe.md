@@ -1,6 +1,6 @@
 ---
 title: John Doe
-role: Treasurer
+role: Grand Sentinel
 image: /uploads/20260226_110513-edit.jpg
 weight: 10
 ---
