@@ -1,7 +1,7 @@
 ---
 title: P One
 role: Grand Sentinel
-image: /uploads/20260226_110513-edit.jpg
+image: /uploads/7400.png
 weight: 1
 ---
 * *Official Role:* President
