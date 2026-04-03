@@ -16,7 +16,7 @@ Affiliated with the **Royal Kennel Club (UK)**, our mission is to ensure that th
 ## Our Mission
 * **Education:** Providing new and experienced owners with expert advice on grooming, health, and temperament.
 * **Ethics:** Ensuring all club breeders adhere to a strict Code of Ethics and responsible breeding practices.
-* **Events:** Hosting Championship and Open shows that bring the Lhasa Apso community together across the North of England.
+* **Events:** Hosting Championship and Open shows that bring the Lhasa Apso community together.
 * **Health:** Monitoring breed-specific health trends and supporting veterinary research to improve the longevity of our dogs.
 
 ---
