@@ -1,12 +1,12 @@
 ---
-title: "NOELAC Code of Ethics"
+title: NOELAC Code of Ethics
 showTableOfContents: true
-type: "page"
+type: page
 ---
 
 ## General Code of Ethics for Club Members
 
-The Kennel Club has established a universal Code of Ethics to be adopted by all breed clubs. All members of the **North of England Lhasa Apso Club (NOELAC)** are required to conduct themselves according to the rules detailed below.
+The Royal Kennel Club has established a universal Code of Ethics to be adopted by all breed clubs. All members of the **North of England Lhasa Apso Club (NOELAC)** are required to conduct themselves according to the rules detailed below.
 
 ---
 
