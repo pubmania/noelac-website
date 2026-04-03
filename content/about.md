@@ -9,7 +9,7 @@ type: page
 
 Founded to celebrate and protect one of the world's most ancient and cherished breeds, the **North of England Lhasa Apso Club (NOELAC)** is a community of enthusiasts, breeders, and owners dedicated to the welfare of the Lhasa Apso.
 
-Affiliated with the **Kennel Club (UK)**, our mission is to ensure that the unique character, health, and "fit for function" standards of the breed are maintained for future generations.
+Affiliated with the **Royal Kennel Club (UK)**, our mission is to ensure that the unique character, health, and "fit for function" standards of the breed are maintained for future generations.
 
 ---
 
