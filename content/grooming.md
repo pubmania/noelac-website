@@ -1,7 +1,7 @@
 ---
-title: "Grooming"
+title: Grooming
 showTableOfContents: true
-type: "page"
+type: page
 ---
 ## The Ultimate Lhasa Apso Grooming Guide
 
@@ -24,12 +24,8 @@ Before you begin, ensure you have the right professional tools. Using the wrong 
 ## 2. Training Your Puppy (The "Cradle" Method)
 Grooming should be a bonding experience, not a battle. Start training your puppy from day one to be handled and touched.
 
-<div class="alert alert-info d-flex align-items-center" role="alert">
-  <span style="font-size: 1.5rem; margin-right: 15px;">💡</span>
-  <div>
-    <strong>Pro Tip:</strong> Sit on the floor with your legs extended and together. Lay the puppy on its back in the crease formed by your legs. This "cradle" position is relaxing for the puppy and gives you total control over their movements.
-  </div>
-</div>
+ >[!tip] Pro Tip
+> Sit on the floor with your legs extended and together. Lay the puppy on its back in the crease formed by your legs. This "cradle" position is relaxing for the puppy and gives you total control over their movements.
 
 * **Be Firm but Kind:** If the puppy struggles, hold them still and wait for them to settle before continuing. Never let them "win" by wiggling away.
 * **Focus Areas:** Always check the "armpits" (elbow creases) and behind the ears - these are the most common spots for knots.
