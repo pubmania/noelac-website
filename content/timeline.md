@@ -30,7 +30,7 @@ A landmark year: NOELAC was granted <strong>annual Championship Certificates (CC
 {{< /timelineItem >}}
 
 {{< timelineItem icon="shield" header="The Modern Era" badge="Present Day" >}}
-Today, the club continues to uphold the <strong>KC Code of Ethics</strong>, manages a dedicated Rescue service, and supports members across the North of England in celebrating the "Lion Dog."
+Today, the club continues to uphold the <strong>RKC Code of Ethics</strong>, manages a dedicated Rescue service, and supports members across the North of England in celebrating the "Lion Dog."
 {{< /timelineItem >}}
 
 {{< /timeline >}}
