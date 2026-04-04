@@ -1,4 +1,7 @@
 colorScheme = "noelac"
+logo = "logo.png"
+secondaryLogo = "logo.png"
+disableTextInHeader = true
 
 [homepage]
 layout = "hero"
@@ -7,6 +10,8 @@ showRecentPosts = true
 
 [header]
 layout = "fixed"
+showLogo = true
+showTitle = false
 
 [footer]
 showThemeAttribution = false
