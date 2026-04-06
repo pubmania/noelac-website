@@ -51,6 +51,7 @@ collections:
     create: true
     slug: "{{slug}}"
     nested:
+      depth: 1
       show_create: true
     filter: {field: "type", value: "page"}
     editor:
