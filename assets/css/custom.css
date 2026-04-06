@@ -1,5 +1,8 @@
+@import url("https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css");
+
 /* ============================================================
    NOELAC OFFICIAL STYLESHEET
+
    Project: North of England Lhasa Apso Club
    Theme: Blowfish (Hugo)
    ============================================================ */
@@ -520,6 +523,201 @@ html.dark [role="dialog"] span {
 }
 
 .scrapbook-photo-frame:hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease !important;
+  margin: 0 !important;
+}
+
+.gallery-zoom-item img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 11. MOBILE NAVIGATION - THE BALANCED FIX */
+
+/* LIGHT MODE ONLY: Force Cream Background and Dark Text on Mobile Overlays */
+html:not(.dark) .fixed.inset-0.z-50, 
+html:not(.dark) .fixed.inset-0.z-100,
+html:not(.dark) [role="dialog"],
+html:not(.dark) #mobile-menu-wrapper {
+  background-color: #fdf5e6 !important; 
+}
+
+html:not(.dark) .fixed.inset-0.z-50 a,
+html:not(.dark) .fixed.inset-0.z-50 span,
+html:not(.dark) .fixed.inset-0.z-50 button,
+html:not(.dark) .fixed.inset-0.z-50 svg,
+html:not(.dark) [role="dialog"] a,
+html:not(.dark) [role="dialog"] span,
+html:not(.dark) [role="dialog"] button,
+html:not(.dark) [role="dialog"] svg {
+  color: #1a1a1a !important; 
+  fill: #1a1a1a !important;
+}
+
+/* DARK MODE ONLY: Ensure the Mobile Overlay is Black/Deep Neutral */
+html.dark .fixed.inset-0.z-50, 
+html.dark .fixed.inset-0.z-100,
+html.dark [role="dialog"],
+html.dark #mobile-menu-wrapper {
+  background-color: #111111 !important; /* Deep Black for Dark Mode */
+}
+
+html.dark .fixed.inset-0.z-50 a,
+html.dark [role="dialog"] a,
+html.dark .fixed.inset-0.z-50 span,
+html.dark [role="dialog"] span {
+  color: #ffffff !important; /* Pure White text for Dark Mode */
+}
+
+/* UNIVERSAL: Ensure the 'Close' (X) button is always the Brand Gold/Orange */
+.fixed.inset-0.z-50 button svg,
+[role="dialog"] button svg {
+  color: rgb(var(--color-primary-600)) !important;
+}
+
+/* 13. PREMIUM NOELAC BUTTON PALETTE */
+.noelac-btn-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 1.5rem !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+.noelac-btn {
+  display: inline-block !important;
+  padding: 0.5rem 1.75rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.noelac-btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* STYLE: PRIMARY (NOELAC ORANGE) */
+.noelac-btn-primary {
+  background-color: rgb(var(--color-primary-600)) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* STYLE: METALLIC (CHAMPAGNE BRONZE) */
+.noelac-btn-metallic {
+  background: linear-gradient(180deg, #c5a059 0%, #b08d57 50%, #8a6b3e 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* STYLE: GREEN (SUCCESS GREEN) */
+.noelac-btn-green {
+  background-color: #40a302 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* STYLE: OUTLINE */
+.noelac-btn-outline {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.noelac-btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.dark .noelac-btn-outline {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 11. HERITAGE SCRAPBOOK GALLERY STYLES */
+.scrapbook-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: -0.5rem !important;
+  margin-top: 3rem !important;
+  padding: 1.5rem !important;
+  background-color: rgba(var(--color-neutral-100), 0.5) !important;
+  border-radius: 1.5rem !important;
+  box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.05) !important;
+  list-style: none !important;
+}
+
+.dark .scrapbook-grid {
+  background-color: rgba(var(--color-neutral-800), 0.3) !important;
+}
+
+.scrapbook-item {
+  width: 50% !important;
+  padding: 0.5rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 768px) {
+  .scrapbook-item {
+    width: 33.333% !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .scrapbook-item {
+    width: 25% !important;
+  }
+}
+
+.scrapbook-photo-frame {
+  background: #ffffff !important;
+  padding: 10px 10px 45px 10px !important; /* Increased for potential captions */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+  cursor: zoom-in !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  position: relative !important;
+}
+
+.scrapbook-caption {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: #555;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+
+.dark .scrapbook-photo-frame {
+  background: #fdfcf0 !important; 
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+.scrapbook-item:nth-child(odd) .scrapbook-photo-frame {
+  transform: rotate(-2deg);
+}
+
+.scrapbook-item:nth-child(even) .scrapbook-photo-frame {
+  transform: rotate(1.5deg);
+}
+
+.scrapbook-photo-frame:hover {
   transform: rotate(0deg) scale(1.1) translateY(-10px) !important;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
   z-index: 50 !important;
@@ -532,4 +730,123 @@ html.dark [role="dialog"] span {
   object-fit: cover !important;
   margin: 0 !important;
   display: block !important;
+}
+
+/* 12. GALLERY HUB COMPONENTS */
+.gallery-hub-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  padding: 2rem !important;
+  gap: 3rem !important;
+  justify-content: center !important;
+}
+
+.scrapbook-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block !important;
+}
+
+.scrapbook-card-item {
+  width: 320px !important;
+  flex-shrink: 0 !important;
+}
+
+.scrapbook-card-frame {
+  background: #ffffff !important;
+  padding: 15px 15px 60px 15px !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  position: relative !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.dark .scrapbook-card-frame {
+  background: #fdfcf0 !important;
+}
+
+.scrapbook-card-photo {
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  background-color: #eee !important;
+}
+
+.scrapbook-card-photo img {
+  margin: 0 !important;
+  transition: transform 0.6s ease !important;
+}
+
+.scrapbook-card-frame:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25) !important;
+  z-index: 10 !important;
+}
+
+.scrapbook-card-frame:hover .scrapbook-card-photo img {
+  transform: scale(1.1) !important;
+}
+
+.scrapbook-card-tape {
+  position: absolute !important;
+  top: -15px !important;
+  left: 50% !important;
+  transform: translateX(-50%) rotate(-3deg) !important;
+  width: 100px !important;
+  height: 35px !important;
+  background-color: rgba(218, 165, 32, 0.4) !important;
+  backdrop-filter: blur(2px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  z-index: 5 !important;
+}
+
+.scrapbook-card-label {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 10px 15px !important;
+  text-align: center !important;
+}
+
+.scrapbook-card-title {
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  margin: 0 !important;
+  color: #333 !important;
+  line-height: 1.2 !important;
+}
+
+.scrapbook-card-date {
+  font-size: 0.85rem !important;
+  color: #777 !important;
+  font-style: italic !important;
+}
+
+.gallery-hub-grid a:nth-child(odd) .scrapbook-card-frame {
+  transform: rotate(-3deg);
+}
+
+.gallery-hub-grid a:nth-child(even) .scrapbook-card-frame {
+  transform: rotate(2deg);
+}
+
+/* 14. WATERMARK OVERLAY */
+.has-watermark {
+  position: relative !important;
+}
+
+.has-watermark::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 55px !important;
+  right: 20px !important;
+  width: 70px !important;
+  height: 70px !important;
+  background-image: url("/logo.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
 }

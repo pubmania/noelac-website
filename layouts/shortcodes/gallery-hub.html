@@ -1,0 +1,56 @@
+<div class="gallery-hub-grid not-prose">
+  {{ range where .Site.RegularPages "Section" "gallery" }}
+    <a href="{{ .RelPermalink }}" class="scrapbook-card-link">
+      <div class="scrapbook-card-item">
+        <div class="scrapbook-card-frame">
+          {{ $image := "" }}
+          {{ $cloudinary_thumb := "" }}
+          {{ $cloud_name := site.Params.cloudinary.cloud_name | default "di1qnuy5r" }}
+
+          {{ if .Params.featureImage }}
+            {{ $image = .Resources.GetMatch (printf "*%s*" .Params.featureImage) }}
+          {{ else if .Params.cloudinary_tag }}
+            {{/* Reach out to Cloudinary for the first image in the collection */}}
+            {{ $url := printf "https://res.cloudinary.com/%s/image/list/%s.json" $cloud_name .Params.cloudinary_tag }}
+            {{ with resources.GetRemote $url }}
+              {{ with .Content | transform.Unmarshal }}
+                {{ if gt (len .resources) 0 }}
+                  {{ $res := index .resources 0 }}
+                  {{ $cloudinary_thumb = printf "https://res.cloudinary.com/%s/image/upload/c_fill,g_auto,w_500,h_375,f_auto,q_auto/%s.%s" $cloud_name $res.public_id $res.format }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ else }}
+            {{/* Fallback to first image in bundle */}}
+            {{ $images := .Resources.ByType "image" }}
+            {{ if gt (len $images) 0 }}
+              {{ $image = index $images 0 }}
+            {{ end }}
+          {{ end }}
+          
+          <div class="scrapbook-card-photo">
+            {{ if $cloudinary_thumb }}
+              <img src="{{ $cloudinary_thumb | safeURL }}" alt="{{ .Title }}" class="w-full h-full object-cover">
+            {{ else if $image }}
+              {{ $thumbnail := $image.Fill "500x375 Center q80" }}
+              <img src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" class="w-full h-full object-cover">
+            {{ else }}
+              <div class="flex items-center justify-center w-full h-full bg-secondary-100 dark:bg-secondary-800 text-secondary-400">
+                <span>No Image</span>
+              </div>
+            {{ end }}
+          </div>
+          
+          <div class="scrapbook-card-tape"></div>
+          
+          <div class="scrapbook-card-label">
+            <h3 class="scrapbook-card-title">{{ .Title }}</h3>
+            {{ if .Date }}
+              <span class="scrapbook-card-date">{{ .Date.Format "2006" }}</span>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </a>
+  {{ end }}
+</div>
