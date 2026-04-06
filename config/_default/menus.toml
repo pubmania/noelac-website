@@ -106,7 +106,7 @@
   weight = 5
 
 [[main]]
-  name = "Roadmap"
-  url = "/roadmap/"
+  name = "Useful Links"
+  url = "/useful-links/"
   parent = "club"
   weight = 6
