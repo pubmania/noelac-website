@@ -50,16 +50,11 @@ collections:
     preview_path: "gallery/{{slug}}"
     create: true
     slug: "{{slug}}"
-    nested:
-      depth: 1
-      show_create: true
-    filter: {field: "type", value: "page"}
     editor:
       preview: false
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Type", name: "type", widget: "hidden", default: "page"}
       - {label: "Cover Image", name: "featureImage", widget: "image", required: false, hint: "Choose the main photo to display on the gallery overview page."}
       - {label: "Cloudinary Tag", name: "cloudinary_tag", widget: "string", required: false, hint: "Tag used for Cloudinary images (e.g. noelac-heritage)."}
       - {label: "Description/Text", name: "body", widget: "markdown", required: false}
