@@ -1,4 +1,5 @@
 {{ $dir := .Get "dir" }}
+{{ $show_captions := .Get "show_captions" | default "false" }}
 {{ $images := "" }}
 
 {{ if $dir }}
@@ -7,22 +8,34 @@
   {{ $images = .Page.Resources.ByType "image" }}
 {{ end }}
 
-<div class="pswp-gallery gallery-zoom-grid not-prose" id="gallery-{{ .Ordinal }}">
+<div class="pswp-gallery scrapbook-grid not-prose" id="gallery-{{ .Ordinal }}">
   {{ range $images }}
-    <div class="gallery-zoom-item">
-      <a href="{{ .RelPermalink }}" 
-         data-pswp-width="{{ .Width }}" 
-         data-pswp-height="{{ .Height }}" 
-         target="_blank"
-         class="block overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
-        {{ $thumbnail := .Fill "800x800 Center" }}
-        <img 
-          src="{{ $thumbnail.RelPermalink }}" 
-          alt="{{ .Name }}" 
-          loading="lazy"
-          class="w-full h-full object-cover nozoom"
-        >
-      </a>
+    <div class="scrapbook-item">
+      <div class="scrapbook-photo-frame">
+        <a href="{{ .RelPermalink }}" 
+           data-pswp-width="{{ .Width }}" 
+           data-pswp-height="{{ .Height }}" 
+           target="_blank"
+           class="block overflow-hidden transition-shadow">
+          {{ $thumbnail := .Fill "800x800 Center" }}
+          <img 
+            src="{{ $thumbnail.RelPermalink }}" 
+            alt="{{ .Name }}" 
+            loading="lazy"
+            class="w-full h-full object-cover">
+        </a>
+        {{ if eq $show_captions "true" }}
+          {{ $title := .Name | path.Base }}
+          {{ $title = replace $title (path.Ext $title) "" }}
+          {{ $title = replace $title "_" " " }}
+          {{ $title = replace $title "-" " " }}
+          {{ if $title }}
+            <span class="scrapbook-caption">
+              {{ $title | title }}
+            </span>
+          {{ end }}
+        {{ end }}
+      </div>
     </div>
   {{ end }}
 </div>
