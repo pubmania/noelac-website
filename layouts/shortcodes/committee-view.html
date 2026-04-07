@@ -1,59 +1,98 @@
 {{ $committee := sort (where .Site.RegularPages "Section" "committee") ".Params.weight" "asc" }}
-{{ $officers := where $committee ".Params.role" "!=" "The Watchdogs" }}
-{{ $watchdogs := where $committee ".Params.role" "==" "The Watchdogs" }}
+{{ $council := where $committee ".Params.category" "high_council" }}
+{{ $outpost := where $committee ".Params.category" "outpost" }}
+{{ $watchdogs := where $committee ".Params.category" "watchdog" }}
 
 <div class="committee-sections not-prose">
-  <!-- 1. THE HIGH COUNCIL (OFFICERS) -->
-  <div class="committee-grid mb-20">
-    {{ range $officers }}
-    <article class="committee-card">
-      <div class="profile-frame">
+  
+  <!-- 1. THE HIGH COUNCIL -->
+  <div class="committee-grid mb-24">
+    {{ range $council }}
+    <article class="committee-card council-card">
+      <div class="profile-frame shadow-2xl">
         {{ if .Params.image }}
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="profile-photo shadow-lg">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="profile-photo">
         {{ else }}
-          <div class="profile-placeholder shadow-lg">
-            <span class="text-3xl font-bold">{{ substr .Title 0 1 }}</span>
+          <div class="profile-placeholder">
+            <span class="text-4xl font-bold">{{ substr .Title 0 1 }}</span>
           </div>
         {{ end }}
       </div>
       <div class="committee-info">
-        <h3 class="name">{{ .Title }}</h3>
+        <h3 class="name">{{ .Title | upper }}</h3>
         <p class="role-fun">{{ .Params.role }}</p>
+        <p class="role-official">(Official Role: {{ .Params.official_role }})</p>
+        {{ if .Params.mission }}
+        <div class="mission-statement">
+          <span class="font-bold">Mission:</span> {{ .Params.mission }}
+        </div>
+        {{ end }}
+        {{ if .Content }}
         <div class="bio text-sm mt-4 text-neutral-600 dark:text-neutral-400">
           {{ .Content }}
         </div>
+        {{ end }}
       </div>
     </article>
     {{ end }}
   </div>
 
-  <!-- 2. THE WATCHDOG PACK -->
-  {{ if $watchdogs }}
-  <div class="pack-section mt-16 pt-16 border-t border-neutral-200 dark:border-neutral-800">
-    <div class="pack-header text-center mb-16 px-4">
-      <h2 class="pack-title">The Watchdogs</h2>
-      <p class="pack-role-subtitle text-primary-600 font-bold tracking-widest uppercase text-xs mb-1">Official Role: Committee Member</p>
-      <div class="pack-mission max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 italic leading-relaxed text-sm">
-        Mission: The eyes and ears of the club, always looking out for the breed.
-      </div>
+  <!-- 2. THE OUTPOST SENTINELS -->
+  <div class="sentinel-section mt-16 pt-16 border-t border-neutral-300 dark:border-neutral-700">
+    <div class="section-header text-center mb-16">
+      <h2 class="section-title">THE OUTPOST SENTINELS</h2>
     </div>
 
-    <div class="pack-grid">
-      {{ range $watchdogs }}
-      <div class="pack-member">
-        <div class="pack-profile-frame">
+    <div class="sentinel-grid">
+      {{ range $outpost }}
+      <article class="sentinel-card">
+        <div class="sentinel-profile-frame shadow-xl">
           {{ if .Params.image }}
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="pack-photo">
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="sentinel-photo">
           {{ else }}
-            <div class="pack-placeholder">
-              <span class="text-xl font-bold">{{ substr .Title 0 1 }}</span>
+            <div class="sentinel-placeholder">
+              <span class="text-2xl font-bold">{{ substr .Title 0 1 }}</span>
             </div>
           {{ end }}
         </div>
-        <h4 class="pack-member-name">{{ .Title }}</h4>
+        <div class="sentinel-info">
+          <h4 class="sentinel-name">{{ .Title }}</h4>
+          <p class="sentinel-fun">{{ .Params.role }}</p>
+          <p class="sentinel-official">({{ .Params.official_role }})</p>
+          {{ if .Params.mission }}
+          <div class="mission-statement mt-4">
+            <span class="font-bold">Mission:</span> {{ .Params.mission }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- 3. THE WATCHDOGS -->
+  <div class="watchdog-section mt-24 pt-16 border-t-2 border-dashed border-neutral-200 dark:border-neutral-800">
+    <div class="section-header text-center mb-12">
+      <h2 class="section-title text-neutral-400">THE WATCHDOGS</h2>
+      <p class="text-xs tracking-tighter uppercase text-neutral-500">Mission: The eyes and ears of the club, always looking out for the breed.</p>
+    </div>
+
+    <div class="watchdog-grid">
+      {{ range $watchdogs }}
+      <div class="watchdog-member">
+        <div class="watchdog-profile-frame grayscale hover:grayscale-0 transition-all duration-500">
+          {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="watchdog-photo">
+          {{ else }}
+            <div class="watchdog-placeholder">
+              <span class="text-xl">{{ substr .Title 0 1 }}</span>
+            </div>
+          {{ end }}
+        </div>
+        <h5 class="watchdog-name">{{ .Title | upper }}</h5>
       </div>
       {{ end }}
     </div>
   </div>
-  {{ end }}
+
 </div>

@@ -77,9 +77,29 @@ collections:
     summary: "{{title}} - {{role}}"
     fields:
       - {label: "Full Name", name: "title", widget: "string"}
-      - {label: "Role", name: "role", widget: "string", hint: "e.g. Chairperson, Secretary, Treasurer"}
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: 
+          - {label: "High Council (Top Officers)", value: "high_council"}
+          - {label: "The Outpost Sentinels (Specialist Roles)", value: "outpost"}
+          - {label: "The Watchdogs (General Committee)", value: "watchdog"}
+        default: "watchdog"
+      - label: "Official Role"
+        name: "official_role"
+        widget: "select"
+        options: ["President", "Chairperson", "Secretary", "Treasurer", "Digital & Special Projects", "Financial Administration", "Media & Communications", "Partnership & Outreach", "Committee Member"]
+        allow_add: true
+        hint: "Select the formal title from the list or type a new one."
+      - label: "Fun Role / Title"
+        name: "role"
+        widget: "select"
+        options: ["Grand Sentinel", "Pack Leader", "Chief Howler", "The Bone Collector", "Signal Sentinel", "Stash Steward", "The Echo Scout", "Bounty Hunter", "Watchdog"]
+        allow_add: true
+        hint: "Select the fun theme-based role or type a new one."
+      - {label: "Mission Statement", name: "mission", widget: "string", required: false}
       - {label: "Profile Photo", name: "image", widget: "image", required: false}
-      - {label: "Bio / Description", name: "body", widget: "markdown", required: false}
+      - {label: "Bio / Description (Optional)", name: "body", widget: "markdown", required: false}
       - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
 
   - name: "settings"

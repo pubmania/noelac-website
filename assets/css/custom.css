@@ -149,8 +149,10 @@ a[role="button"] * {
 
 /* Dropdowns */
 .menuhide>div {
-  background-color: rgba(var(--color-primary-600), 0.9) !important; /* Semi-transparent */
-  backdrop-filter: blur(8px) !important; /* Glass effect */
+  background-color: rgba(var(--color-primary-600), 0.9) !important;
+  /* Semi-transparent */
+  backdrop-filter: blur(8px) !important;
+  /* Glass effect */
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 0.5rem !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
@@ -188,111 +190,165 @@ article.prose .prose-invert p,
   color: #ffffff !important;
 }
 
-/* 9. COMMITTEE PROFILE CARDS */
-.committee-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin: 3rem 0;
+/* 9. COMMITTEE SECTIONS & HIERARCHY */
+.committee-grid,
+.sentinel-grid,
+.watchdog-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 3rem !important;
+  margin: 3rem auto !important;
+  max-width: 1200px !important;
 }
 
-.committee-card {
-  flex: 0 1 350px; /* Allow items to shrink but target 350px for centering */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1.5rem;
-  background-color: transparent;
-  transition: transform 0.3s ease;
-}
-
-.committee-card:hover {
-  transform: translateY(-5px);
-}
-
-.profile-frame {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  margin-bottom: 1.5rem;
-  border-radius: 50%;
-  border: 4px solid rgb(var(--color-primary-600));
-  overflow: hidden;
-  padding: 4px;
-  background-color: #ffffff;
-}
-
-.profile-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+.profile-photo,
+.sentinel-photo,
+.watchdog-photo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
   margin: 0 !important;
 }
 
-.committee-info .name {
-  font-size: 1.25rem;
-  font-weight: 800;
-  margin-bottom: 0.25rem;
+/* 9a. THE HIGH COUNCIL (COUNCIL CARDS) */
+.council-card {
+  flex: 0 1 400px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 2rem !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.committee-info .role-fun {
-  font-size: 1rem;
-  color: rgb(var(--color-primary-600));
-  font-weight: 700;
-  text-transform: capitalize;
+.council-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
 }
 
-/* 10. THE WATCHDOG PACK GRID */
-.pack-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3rem;
-  max-width: 1000px;
-  margin: 0 auto;
+.council-card .profile-frame {
+  width: 160px !important;
+  height: 160px !important;
+  border: 4px solid rgb(var(--color-primary-600)) !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  padding: 4px !important;
+  margin-bottom: 2rem !important;
+  box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1) !important;
 }
 
-.pack-member {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 140px;
+.council-card .name {
+  font-size: 1.5rem !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 0.5rem !important;
 }
 
-.pack-profile-frame {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px solid rgb(var(--color-primary-600));
-  overflow: hidden;
-  margin-bottom: 1rem;
-  background-color: #ffffff;
-  padding: 3px;
-  box-shadow: var(--tw-shadow);
+.council-card .role-fun {
+  font-size: 1rem !important;
+  color: rgb(var(--color-primary-600)) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
 }
 
-.pack-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+.council-card .role-official {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  opacity: 0.7 !important;
+  margin-bottom: 1rem !important;
 }
 
-.pack-member-name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: rgb(var(--color-primary-600));
-  text-align: center;
-  margin: 0 !important;
+.mission-statement {
+  background: rgba(var(--color-primary-500), 0.05) !important;
+  border-left: 3px solid rgb(var(--color-primary-600)) !important;
+  padding: 0.75rem 1rem !important;
+  font-style: italic !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  border-radius: 0 8px 8px 0 !important;
 }
 
-.pack-title {
-  font-size: 2.25rem !important;
+/* 9b. THE OUTPOST SENTINELS */
+.sentinel-card {
+  flex: 0 1 300px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 1rem !important;
+}
+
+.sentinel-profile-frame {
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  border: 4px solid rgb(var(--color-primary-600)) !important;
+  overflow: hidden !important;
+  padding: 4px !important;
+  background-color: #fff !important;
+  margin-bottom: 1.25rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.sentinel-name {
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.sentinel-fun {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: rgb(var(--color-primary-600)) !important;
+  text-transform: uppercase !important;
+}
+
+.sentinel-official {
+  font-size: 0.8rem !important;
+  opacity: 0.6 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* 9c. THE WATCHDOGS */
+.watchdog-grid {
+  gap: 3rem !important;
+}
+
+.watchdog-member {
+  flex: 0 1 200px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.watchdog-profile-frame {
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  background-color: #fff !important;
+  overflow: hidden !important;
+  margin-bottom: 0.75rem !important;
+  border: 4px solid rgb(var(--color-primary-600)) !important;
+  padding: 4px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .watchdog-profile-frame {
+  background-color: #222 !important;
+}
+
+.watchdog-name {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  color: var(--color-primary-600) !important;
+}
+
+.section-title {
+  font-size: 2.5rem !important;
   font-weight: 900 !important;
-  margin-bottom: 1.5rem !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 1rem !important;
 }
 
 /* 10. ADVANCED AUTO-GALLERY (Modal & 1:1 Grid) */
@@ -340,11 +396,11 @@ article.prose .prose-invert p,
 /* 11. MOBILE NAVIGATION - THE BALANCED FIX */
 
 /* LIGHT MODE ONLY: Force Cream Background and Dark Text on Mobile Overlays */
-html:not(.dark) .fixed.inset-0.z-50, 
+html:not(.dark) .fixed.inset-0.z-50,
 html:not(.dark) .fixed.inset-0.z-100,
 html:not(.dark) [role="dialog"],
 html:not(.dark) #mobile-menu-wrapper {
-  background-color: #fdf5e6 !important; 
+  background-color: #fdf5e6 !important;
 }
 
 html:not(.dark) .fixed.inset-0.z-50 a,
@@ -355,23 +411,25 @@ html:not(.dark) [role="dialog"] a,
 html:not(.dark) [role="dialog"] span,
 html:not(.dark) [role="dialog"] button,
 html:not(.dark) [role="dialog"] svg {
-  color: #1a1a1a !important; 
+  color: #1a1a1a !important;
   fill: #1a1a1a !important;
 }
 
 /* DARK MODE ONLY: Ensure the Mobile Overlay is Black/Deep Neutral */
-html.dark .fixed.inset-0.z-50, 
+html.dark .fixed.inset-0.z-50,
 html.dark .fixed.inset-0.z-100,
 html.dark [role="dialog"],
 html.dark #mobile-menu-wrapper {
-  background-color: #111111 !important; /* Deep Black for Dark Mode */
+  background-color: #111111 !important;
+  /* Deep Black for Dark Mode */
 }
 
 html.dark .fixed.inset-0.z-50 a,
 html.dark [role="dialog"] a,
 html.dark .fixed.inset-0.z-50 span,
 html.dark [role="dialog"] span {
-  color: #ffffff !important; /* Pure White text for Dark Mode */
+  color: #ffffff !important;
+  /* Pure White text for Dark Mode */
 }
 
 /* UNIVERSAL: Ensure the 'Close' (X) button is always the Brand Gold/Orange */
@@ -484,11 +542,12 @@ html.dark [role="dialog"] span {
 
 .scrapbook-photo-frame {
   background: #ffffff !important;
-  padding: 10px 10px 45px 10px !important; /* Increased for potential captions */
+  padding: 10px 10px 45px 10px !important;
+  /* Increased for potential captions */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
   cursor: zoom-in !important;
-  border: 1px solid rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
   position: relative !important;
 }
 
@@ -510,8 +569,8 @@ html.dark [role="dialog"] span {
 }
 
 .dark .scrapbook-photo-frame {
-  background: #fdfcf0 !important; 
-  border-color: rgba(255,255,255,0.1) !important;
+  background: #fdfcf0 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .scrapbook-item:nth-child(odd) .scrapbook-photo-frame {
@@ -535,11 +594,11 @@ html.dark [role="dialog"] span {
 /* 11. MOBILE NAVIGATION - THE BALANCED FIX */
 
 /* LIGHT MODE ONLY: Force Cream Background and Dark Text on Mobile Overlays */
-html:not(.dark) .fixed.inset-0.z-50, 
+html:not(.dark) .fixed.inset-0.z-50,
 html:not(.dark) .fixed.inset-0.z-100,
 html:not(.dark) [role="dialog"],
 html:not(.dark) #mobile-menu-wrapper {
-  background-color: #fdf5e6 !important; 
+  background-color: #fdf5e6 !important;
 }
 
 html:not(.dark) .fixed.inset-0.z-50 a,
@@ -550,23 +609,25 @@ html:not(.dark) [role="dialog"] a,
 html:not(.dark) [role="dialog"] span,
 html:not(.dark) [role="dialog"] button,
 html:not(.dark) [role="dialog"] svg {
-  color: #1a1a1a !important; 
+  color: #1a1a1a !important;
   fill: #1a1a1a !important;
 }
 
 /* DARK MODE ONLY: Ensure the Mobile Overlay is Black/Deep Neutral */
-html.dark .fixed.inset-0.z-50, 
+html.dark .fixed.inset-0.z-50,
 html.dark .fixed.inset-0.z-100,
 html.dark [role="dialog"],
 html.dark #mobile-menu-wrapper {
-  background-color: #111111 !important; /* Deep Black for Dark Mode */
+  background-color: #111111 !important;
+  /* Deep Black for Dark Mode */
 }
 
 html.dark .fixed.inset-0.z-50 a,
 html.dark [role="dialog"] a,
 html.dark .fixed.inset-0.z-50 span,
 html.dark [role="dialog"] span {
-  color: #ffffff !important; /* Pure White text for Dark Mode */
+  color: #ffffff !important;
+  /* Pure White text for Dark Mode */
 }
 
 /* UNIVERSAL: Ensure the 'Close' (X) button is always the Brand Gold/Orange */
@@ -679,11 +740,12 @@ html.dark [role="dialog"] span {
 
 .scrapbook-photo-frame {
   background: #ffffff !important;
-  padding: 10px 10px 45px 10px !important; /* Increased for potential captions */
+  padding: 10px 10px 45px 10px !important;
+  /* Increased for potential captions */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
   cursor: zoom-in !important;
-  border: 1px solid rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
   position: relative !important;
 }
 
@@ -705,8 +767,8 @@ html.dark [role="dialog"] span {
 }
 
 .dark .scrapbook-photo-frame {
-  background: #fdfcf0 !important; 
-  border-color: rgba(255,255,255,0.1) !important;
+  background: #fdfcf0 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .scrapbook-item:nth-child(odd) .scrapbook-photo-frame {
@@ -756,7 +818,7 @@ html.dark [role="dialog"] span {
   background: #ffffff !important;
   padding: 15px 15px 60px 15px !important;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
-  border: 1px solid rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
   position: relative !important;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
@@ -796,7 +858,7 @@ html.dark [role="dialog"] span {
   height: 35px !important;
   background-color: rgba(218, 165, 32, 0.4) !important;
   backdrop-filter: blur(2px) !important;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
   z-index: 5 !important;
 }
 
