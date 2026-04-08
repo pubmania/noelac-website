@@ -1,10 +1,10 @@
 ---
 title: Janice McIntyre
-category: watchdog
+category: outpost
 official_role: Committee Member
 role: Watchdog
-mission: The eyes and ears of the club, always looking out for the breed.
+mission: 'Guarding the ancient truths of the breed and ensuring no one mistakes
+  a "Bark Lion" for a common rug. '
 image: /uploads/7309.png
 weight: 21
 ---
-
