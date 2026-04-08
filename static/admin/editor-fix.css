@@ -1,0 +1,27 @@
+/* Hide the Preview Pane entirely */
+.nc-entryEditor-previewPane, 
+[class*="PreviewPane"], 
+[class*="Pane2"] {
+    display: none !important;
+}
+
+/* Force the Editor Pane to fill the whole screen */
+.nc-entryEditor-controlPane, 
+[class*="ControlPane"], 
+[class*="Pane1"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+}
+
+/* Fix mobile padding so text doesn't hit the screen edges */
+[class*="EditorContainer"] {
+    padding: 10px !important;
+}
+
+/* Make the 'Back' and 'Publish' buttons fit on one line */
+[class*="AppHeader-AppHeaderNavList"] {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

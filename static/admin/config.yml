@@ -10,6 +10,8 @@ logo_url: /logo.png
   
 local_backend: true
 publish_mode: simple #editorial_workflow
+editor:
+  preview: false
 media_folder: "static/uploads"
 public_folder: "/uploads"
 
