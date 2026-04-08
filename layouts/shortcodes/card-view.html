@@ -1,16 +1,16 @@
 <div class="breeder-grid not-prose">
-  {{ range where .Site.RegularPages "Section" "breeders" }}
+  {{ range where .Site.RegularPages "Type" "breeders" }}
   <article class="breeder-card shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
-    
+
     {{ if .Params.puppies_available }}
     <!-- Highlight Block for Puppies -->
     <div class="breeder-header-highlight">
       <span>{{ .Title }}</span>
       <span class="breeder-badge">
         {{ if .Params.puppies_count }}
-          {{ .Params.puppies_count }} Puppies Available
+        {{ .Params.puppies_count }} Puppies Available
         {{ else }}
-          Puppies Available
+        Puppies Available
         {{ end }}
       </span>
     </div>
@@ -20,10 +20,10 @@
       <span>{{ .Title }}</span>
     </div>
     {{ end }}
-    
+
     <div class="breeder-body">
       <h3 style="color: rgb(var(--color-primary-600))" class="font-semibold text-lg mb-4">{{ .Params.owner }}</h3>
-      
+
       <ul style="list-style-type: none; padding: 0; margin: 0; font-size: 0.875rem;">
         {{ with .Params.location }}
         <li style="display: flex; align-items: flex-start; margin-bottom: 0.5rem;">
@@ -31,14 +31,15 @@
           <span><strong>Location:</strong> {{ . }}</span>
         </li>
         {{ end }}
-        
+
         {{ with .Params.email }}
         <li style="display: flex; align-items: flex-start; margin-bottom: 0.5rem;">
           <span style="margin-right: 0.5rem; flex-shrink: 0;">📧</span>
-          <span class="break-words"><strong>Email:</strong> <a href="mailto:{{ . }}" style="color: #4299e1; text-decoration: none;">{{ . }}</a></span>
+          <span class="break-words"><strong>Email:</strong> <a href="mailto:{{ . }}"
+              style="color: #4299e1; text-decoration: none;">{{ . }}</a></span>
         </li>
         {{ end }}
-        
+
         {{ with .Params.phone }}
         <li style="display: flex; align-items: flex-start;">
           <span style="margin-right: 0.5rem;">📱</span>
@@ -47,7 +48,7 @@
         {{ end }}
       </ul>
     </div>
-    
+
     <div class="breeder-footer">
       Last updated: {{ .Date.Format "02/01/2006" }}
     </div>

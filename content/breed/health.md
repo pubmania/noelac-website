@@ -1,8 +1,10 @@
 ---
 title: "Health & Welfare"
 showTableOfContents: true
+date: 2026-04-08
 layout: "page"
 type: "page"
+weight: 40
 ---
 
 Lhasa Apsos are generally a healthy and long-lived breed, often living for 12–15 years or more. However, like all breeds, they can be predisposed to certain inherited health conditions. The North of England Lhasa Apso Club (NOELAC) is dedicated to promoting responsible breeding and ensuring that health testing remains a top priority for all members and breeders.

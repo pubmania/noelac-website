@@ -1,29 +1,30 @@
 [[main]]
   name = "The Breed"
   identifier = "breed"
+  url = "/breed/"
   weight = 20
 
 [[main]]
   name = "Standard"
-  url = "/breed-standard/"
+  url = "/breed/standard/"
   parent = "breed"
   weight = 1
 
 [[main]]
   name = "Grooming"
-  url = "/grooming/"
+  url = "/breed/grooming/"
   parent = "breed"
   weight = 2
 
 [[main]]
   name = "History"
-  url = "/history/"
+  url = "/breed/history/"
   parent = "breed"
   weight = 3
 
 [[main]]
   name = "Health"
-  url = "/health/"
+  url = "/breed/health/"
   parent = "breed"
   weight = 4
 
@@ -40,23 +41,24 @@
 [[main]]
   name = "Community"
   identifier = "community"
+  url = "/community/"
   weight = 40
 
 [[main]]
   name = "Breeders"
-  url = "/breeders/"
+  url = "/community/breeders/"
   parent = "community"
   weight = 1
 
 [[main]]
   name = "Member's Lounge"
-  url = "/lounge/"
+  url = "/community/lounge/"
   parent = "community"
   weight = 2
 
 [[main]]
   name = "Rescue"
-  url = "/rescue/"
+  url = "/community/rescue/"
   parent = "community"
   weight = 3
 
@@ -72,41 +74,42 @@
 
 [[main]]
   name = "Club Info"
-  identifier = "club"
+  identifier = "club-info"
+  url = "/club-info/"
   weight = 70
 
 [[main]]
   name = "About"
-  url = "/about/"
-  parent = "club"
+  url = "/club-info/about/"
+  parent = "club-info"
   weight = 1
 
 [[main]]
   name = "Timeline"
-  url = "/timeline/"
-  parent = "club"
+  url = "/club-info/timeline/"
+  parent = "club-info"
   weight = 2
 
 [[main]]
   name = "Membership"
-  url = "/join/"
-  parent = "club"
+  url = "/club-info/join/"
+  parent = "club-info"
   weight = 3
 
 [[main]]
   name = "Code of Ethics"
-  url = "/ethics/"
-  parent = "club"
+  url = "/club-info/ethics/"
+  parent = "club-info"
   weight = 4
 
 [[main]]
   name = "FAQs"
-  url = "/faq/"
-  parent = "club"
+  url = "/club-info/faq/"
+  parent = "club-info"
   weight = 5
 
 [[main]]
   name = "Useful Links"
-  url = "/useful-links/"
-  parent = "club"
+  url = "/club-info/useful-links/"
+  parent = "club-info"
   weight = 6

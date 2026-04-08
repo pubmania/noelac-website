@@ -1,6 +1,7 @@
 ---
 title: About NOELAC
 type: page
+weight: 10
 ---
 ## The North of England Lhasa Apso Club
 

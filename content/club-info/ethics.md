@@ -2,6 +2,7 @@
 title: NOELAC Code of Ethics
 showTableOfContents: true
 type: page
+weight: 30
 ---
 
 ## General Code of Ethics for Club Members

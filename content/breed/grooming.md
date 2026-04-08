@@ -1,7 +1,8 @@
 ---
 title: Grooming
 showTableOfContents: true
-type: page
+description: "The Ultimate Lhasa Apso Grooming Guide"
+weight: 20
 ---
 ## The Ultimate Lhasa Apso Grooming Guide
 

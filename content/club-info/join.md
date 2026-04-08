@@ -2,6 +2,7 @@
 title: "Join NOELAC"
 layout: "page"
 type: "page"
+weight: 30
 ---
 
 Become a member of the North of England Lhasa Apso Club and join a community dedicated to the preservation and welfare of this magnificent breed. 

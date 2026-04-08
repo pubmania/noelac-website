@@ -1,7 +1,9 @@
 ---
 title: Lhasa Apso Breed Standard
 showTableOfContents: true
+date: 2026-04-08
 type: page
+weight: 10
 ---
 
 **The Royal Kennel Club (UK) Standard**

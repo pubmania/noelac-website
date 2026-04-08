@@ -37,6 +37,12 @@ showSubTitle = true
 showResultCount = true
 showClearButton = true
 
+[list]
+  showDate = false
+  showSummary = true
+  showRecent = false
+  cardView = true
+
 [[social]]
 name = "facebook"
 icon = "facebook"

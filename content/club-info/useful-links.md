@@ -3,6 +3,7 @@ title: "Useful Links"
 layout: "page"
 showTableOfContents: true
 type: "page"
+weight: 60
 ---
 
 Explore the official organisations and partners dedicated to the Lhasa Apso breed in the United Kingdom.

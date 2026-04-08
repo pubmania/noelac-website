@@ -1,6 +1,7 @@
 ---
-title: "Assured Breeders"
+title: "Trusted Breeders"
 type: "breeders"
+weight: 10
 ---
 > [!danger] Beware of puppy farmers!
 > Be responsible when choosing a puppy.  

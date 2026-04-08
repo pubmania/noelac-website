@@ -1,6 +1,8 @@
 ---
 title: "A Brief History of the Lhasa Apso"
 showTableOfContents: true
+date: 2026-04-08
+weight: 30
 layout: "page"
 type: "page"
 ---

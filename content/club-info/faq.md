@@ -2,6 +2,7 @@
 title: "Frequently Asked Questions"
 layout: "page"
 type: "page"
+weight: 50
 ---
 
 Lhasa Apsos are unique and wonderful companions with an ancient Tibetan history. Here are some of the most common questions new owners have about the breed.

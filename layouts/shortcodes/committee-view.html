@@ -20,11 +20,14 @@
       </div>
       <div class="committee-info">
         <h3 class="name">{{ .Title | upper }}</h3>
-        <p class="role-fun">{{ .Params.role }}</p>
-        <p class="role-official">(Official Role: {{ .Params.official_role }})</p>
-        {{ if .Params.mission }}
+        {{ $role_data := index (where .Site.Data.designations.roles "official_role" .Params.designation) 0 }}
+        {{ if $role_data }}
+          <p class="role-fun">{{ $role_data.fun_role }}</p>
+          <p class="role-official">(Official Role: {{ $role_data.official_role }})</p>
+        {{ end }}
+        {{ if $role_data.mission }}
         <div class="mission-statement">
-          <span class="font-bold">Mission:</span> {{ .Params.mission }}
+          <span class="font-bold">Mission:</span> {{ $role_data.mission }}
         </div>
         {{ end }}
         {{ if .Content }}
@@ -57,11 +60,14 @@
         </div>
         <div class="sentinel-info">
           <h4 class="sentinel-name">{{ .Title }}</h4>
-          <p class="sentinel-fun">{{ .Params.role }}</p>
-          <p class="sentinel-official">({{ .Params.official_role }})</p>
-          {{ if .Params.mission }}
+          {{ $role_data := index (where .Site.Data.designations.roles "official_role" .Params.designation) 0 }}
+          {{ if $role_data }}
+            <p class="sentinel-fun">{{ $role_data.fun_role }}</p>
+            <p class="sentinel-official">({{ $role_data.official_role }})</p>
+          {{ end }}
+          {{ if $role_data.mission }}
           <div class="mission-statement mt-4">
-            <span class="font-bold">Mission:</span> {{ .Params.mission }}
+            <span class="font-bold">Mission:</span> {{ $role_data.mission }}
           </div>
           {{ end }}
         </div>

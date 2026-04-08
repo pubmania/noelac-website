@@ -1,6 +1,7 @@
 ---
 title: Timeline
 type: page
+weight: 20
 ---
 The club timeline
 
