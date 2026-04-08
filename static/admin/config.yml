@@ -88,13 +88,13 @@ collections:
       - label: "Official Role"
         name: "official_role"
         widget: "select"
-        options: ["President", "Chairperson", "Secretary", "Treasurer", "Digital & Special Projects", "Financial Administration", "Media & Communications", "Partnership & Outreach", "Committee Member"]
+        options: ["President", "Chairperson", "Secretary", "Treasurer", "Digital & Special Projects", "Financial Administration", "Media & Communications", "Partnership & Outreach", "Breed Awareness Liaison", "Committee Member"]
         allow_add: true
         hint: "Select the formal title from the list or type a new one."
       - label: "Fun Role / Title"
         name: "role"
         widget: "select"
-        options: ["Grand Sentinel", "Pack Leader", "Chief Howler", "The Bone Collector", "Signal Sentinel", "Stash Steward", "The Echo Scout", "Bounty Hunter", "Watchdog"]
+        options: ["Grand Sentinel", "Pack Leader", "Chief Howler", "The Bone Collector", "Signal Sentinel", "Stash Steward", "The Echo Scout", "Bounty Hunter", "The Wisdom Keeper", "Watchdog"]
         allow_add: true
         hint: "Select the fun theme-based role or type a new one."
       - {label: "Mission Statement", name: "mission", widget: "string", required: false}
