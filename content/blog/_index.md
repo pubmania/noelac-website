@@ -8,7 +8,6 @@ cascade:
   orderByWeight: true
   invertPagination: true
   groupByYear: false
-draft: true
 date: 2026-04-09T14:41:00.000+01:00
 weight: 10
 ---
