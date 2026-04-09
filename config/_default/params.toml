@@ -1,35 +1,13 @@
+disableTextInHeader = true
 colorScheme = "noelac"
 logo = "logo.png"
 secondaryLogo = "logo.png"
-disableTextInHeader = true
 
-[homepage]
-layout = "hero"
-homepageImage = "hero-winner.jpg"
-showRecentPosts = true
-
-[header]
-layout = "fixed"
-showLogo = true
-showTitle = false
-
-[footer]
-showThemeAttribution = false
-showSocial = true
+[calendar_config]
 calendar_provider = "google"
-calendar_id = ""
-calendar_view = "dayGridMonth"
+calendar_view = "listMonth"
 show_calendar = true
-
-[article]
-showTableOfContents = false
-smartTOC = true
-showDate = false
-showDateUpdated = false
-showWordCount = false
-showReadingTime = false
-showAuthor = false
-showTags = false
+calendar_id = "https://calendar.google.com/calendar/embed?src=c_ab07c807fc5701020f6f214de33dc53f75ef36f78b19fe548f8acd537d651448%40group.calendar.google.com&ctz=Europe%2FLondon"
 
 [search]
 showExcerpt = true
@@ -37,11 +15,10 @@ showSubTitle = true
 showResultCount = true
 showClearButton = true
 
-[list]
-  showDate = false
-  showSummary = true
-  showRecent = false
-  cardView = true
+[header]
+layout = "fixed"
+showLogo = true
+showTitle = false
 
 [[social]]
 name = "facebook"
@@ -63,8 +40,31 @@ name = "youtube"
 icon = "youtube"
 link = "https://youtube.com"
 
-[calendar_config]
+[homepage]
+layout = "hero"
+homepageImage = "hero-winner.jpg"
+showRecentPosts = true
+
+[article]
+showTableOfContents = false
+smartTOC = true
+showDate = false
+showDateUpdated = false
+showWordCount = false
+showReadingTime = false
+showAuthor = false
+showTags = false
+
+[footer]
+showThemeAttribution = false
+showSocial = true
 calendar_provider = "google"
-calendar_view = "listMonth"
+calendar_id = ""
+calendar_view = "dayGridMonth"
 show_calendar = true
-calendar_id = "en.uk#holiday@group.v.calendar.google.com"
+
+[list]
+showDate = false
+showSummary = true
+showRecent = false
+cardView = true
