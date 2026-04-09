@@ -7,7 +7,7 @@ secondaryLogo = "logo.png"
 calendar_provider = "google"
 calendar_view = "listMonth"
 show_calendar = true
-calendar_id = "https://calendar.google.com/calendar/embed?src=c_ab07c807fc5701020f6f214de33dc53f75ef36f78b19fe548f8acd537d651448%40group.calendar.google.com&ctz=Europe%2FLondon"
+calendar_id = "c_ab07c807fc5701020f6f214de33dc53f75ef36f78b19fe548f8acd537d651448@group.calendar.google.com"
 
 [search]
 showExcerpt = true
