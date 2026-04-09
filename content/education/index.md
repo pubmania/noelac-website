@@ -1,8 +1,10 @@
 ---
-title: Judges & Education
-type: page
+title: "Judges & Education"
+showTableOfContents: true
+type: "page"
 ---
-## Judging Lhasa Apsos: Education & JEP
+
+# Judging Lhasa Apsos: Education & JEP
 
 The Northern of England Lhasa Apso Club (NOELAC) is committed to maintaining the highest standards of judging for our breed. All prospective and established judges are now required to follow the Royal Kennel Club (RKC) **Judges Education Programme (JEP)**.
 
