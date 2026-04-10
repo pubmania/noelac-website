@@ -3,16 +3,14 @@ title: "Member's Lounge"
 type: "page"
 weight: 20
 cascade:
-  showDate: false
-  showAuthor: false
+  showDate: true
+  showAuthor: true
   showSummary: false
-  orderByWeight: true
+  #orderByWeight: true
   invertPagination: true
-  groupByYear: false
-  cardView: false
+  #groupByYear: false
+  cardView: true
+  showBreadcrumbs: true
 ---
 
-Exclusive content for members.
-
-> [!NOTE]
-> This page is currently under construction.
+Articles submitted by NOELAC Members.

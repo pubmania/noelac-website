@@ -220,9 +220,12 @@ collections:
     label: "The Lounge (Posts)"
     folder: "content/community/lounge"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date Listed / Updated", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "NOELAC", required: false}
+      - {label: "Newsletter Year", name: "newsletter_year", widget: "string", required: false}
+      - {label: "Cover Image URL", name: "featureAsset", widget: "string", required: false, hint: "Paste the full Cloudinary URL here for the card thumbnail."}
       - {label: "Content", name: "body", widget: "markdown"}
       - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-
