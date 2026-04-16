@@ -668,6 +668,28 @@ html:not(.dark) .pswp__button svg {
   fill: #ffffff !important;
 }
 
+/* 15. PHOTOSWIPE CAPTION BOX */
+.pswp__custom-caption {
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 1rem;
+  color: #fff;
+  width: 100%;
+  padding: 12px 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 1000;
+  font-weight: 500;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.025em;
+}
+
+.pswp__custom-caption b {
+  color: rgb(var(--color-primary-600));
+  font-weight: 800;
+}
+
 .scrapbook-card-frame:hover .scrapbook-card-photo img {
   transform: scale(1.1) !important;
 }

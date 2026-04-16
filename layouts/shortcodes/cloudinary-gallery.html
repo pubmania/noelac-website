@@ -15,8 +15,30 @@
       children: 'a',
       pswpModule: () => import('https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.esm.js')
     });
+
+    // Register custom caption element
+    lightbox.on('uiRegister', function() {
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'root',
+        html: 'Caption',
+        onInit: (el, pswp) => {
+          pswp.on('change', () => {
+            const currSlideElement = pswp.currSlide.data.element;
+            let captionHTML = '';
+            if (currSlideElement) {
+              captionHTML = currSlideElement.getAttribute('data-pswp-caption-content');
+            }
+            el.innerHTML = captionHTML || '';
+          });
+        }
+      });
+    });
+
     lightbox.init();
-    console.log("PhotoSwipe initialized for gallery: {{ $gallery_id }}");
+    console.log("PhotoSwipe with captions initialized for gallery: {{ $gallery_id }}");
   };
 
   if (document.readyState === 'loading') {
@@ -42,36 +64,31 @@
 
         <div class="scrapbook-item">
           <div class="scrapbook-photo-frame">
+            {{/* PRE-CALCULATE CAPTION FOR LIGHTBOX */}}
+            {{ $caption := "" }}
+            {{ if .context }}
+              {{ if .context.custom }}
+                {{ $caption = .context.custom.caption | default .context.custom.alt }}
+              {{ end }}
+            {{ end }}
+            {{ if not $caption }}
+              {{ $raw := .public_id | path.Base }}
+              {{ $cleaned := replaceRE `_[a-z0-9]{6,8}$` "" $raw }}
+              {{ $cleaned = replace $cleaned "_" " " }}
+              {{ $cleaned = replace $cleaned "-" " " }}
+              {{ $caption = $cleaned | title }}
+            {{ end }}
+
             <a href="{{ $full_url }}" 
                data-pswp-width="{{ printf "%.0f" $display_w }}" 
                data-pswp-height="{{ printf "%.0f" $display_h }}" 
+               data-pswp-caption-content="{{ $caption }}"
                target="_blank"
-               class="block overflow-hidden">
-              <img src="{{ $thumb_url }}" alt="Gallery Image" loading="lazy" class="w-full h-full object-cover">
+               class="block overflow-hidden transition-shadow">
+              <img src="{{ $thumb_url }}" alt="{{ $caption }}" loading="lazy" class="w-full h-full object-cover">
             </a>
             
             {{ if eq $show_captions "true" }}
-              {{/* CAPTION LOGIC */}}
-              {{ $caption := "" }}
-              
-              {{/* Use Cloudinary metadata if available */}}
-              {{ if .context }}
-                {{ if .context.custom }}
-                  {{ $caption = .context.custom.caption | default .context.custom.alt }}
-                {{ end }}
-              {{ end }}
-              
-              {{ if not $caption }}
-                {{/* Clean up filename */}}
-                {{ $raw := .public_id | path.Base }}
-                {{/* Remove random hash suffix (e.g. _gkmjyo) */}}
-                {{ $cleaned := replaceRE `_[a-z0-9]{6,8}$` "" $raw }}
-                {{/* Replace separators */}}
-                {{ $cleaned = replace $cleaned "_" " " }}
-                {{ $cleaned = replace $cleaned "-" " " }}
-                {{ $caption = $cleaned | title }}
-              {{ end }}
-              
               <span class="scrapbook-caption">
                 {{ $caption | safeHTML }}
               </span>
