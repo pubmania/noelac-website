@@ -1,3 +1,5 @@
+local_backend: true
+
 backend:
   name: github
   repo: pubmania/noelac-website
@@ -8,7 +10,6 @@ site_url: https://noelac-website.pages.dev
 display_url: https://noelac-website.pages.dev
 logo_url: /logo.png
   
-local_backend: true
 publish_mode: simple #editorial_workflow
 editor:
   preview: false
@@ -16,158 +17,7 @@ media_folder: "static/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "breeders"
-    label: "Breeders"
-    folder: "content/community/breeders"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Kennel Name (Affix)", name: "title", widget: "string"}
-      - {label: "Date Listed / Updated", name: "date", widget: "datetime"}
-      - {label: "Type", name: "type", widget: "hidden", default: "breeders"}
-      - {label: "Owner Name", name: "owner", widget: "string"}
-      - {label: "Location", name: "location", widget: "string"}
-      - {label: "Email", name: "email", widget: "string", required: false}
-      - {label: "Phone", name: "phone", widget: "string", required: false}
-      - {label: "Puppies Available?", name: "puppies_available", widget: "boolean", default: false, required: false}
-      - label: "Number of Puppies"
-        name: "puppies_count"
-        widget: "number"
-        required: false
-        min: 1
-        value_type: "int"
-        hint: "Leave blank if no puppies are available."
-      - {label: "Additional Notes", name: "body", widget: "markdown", required: false}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-  - name: "news"
-    label: "News"
-    folder: "content/blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-  - name: "gallery_albums"
-    label: "Gallery Albums"
-    folder: "content/gallery"
-    path: "{{slug}}/index"
-    preview_path: "gallery/{{slug}}"
-    create: true
-    slug: "{{slug}}"
-    editor:
-      preview: false
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Cover Image", name: "featureImage", widget: "image", required: false, hint: "Choose the main photo to display on the gallery overview page."}
-      - {label: "Cloudinary Tag", name: "cloudinary_tag", widget: "string", required: false, hint: "Tag used for Cloudinary images (e.g. noelac-heritage)."}
-      - {label: "Description/Text", name: "body", widget: "markdown", required: false}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-
-  - name: "pages"
-    label: "Main Pages"
-    files:
-      - name: "home"
-        label: "Home Page"
-        file: "content/_index.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Layout", name: "layout", widget: "hidden", default: "hero"}
-          - {label: "URL (Should be /)", name: "url", widget: "string", default: "/"}
-          - {label: "Body", name: "body", widget: "markdown"}
-
-      - name: "calendar"
-        label: "Calendar Page"
-        file: "content/calendar/index.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-
-      - name: "judges"
-        label: "Judges (Education)"
-        file: "content/education/index.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-
-      - name: "lounge_intro"
-        label: "Member's Lounge Hub"
-        file: "content/community/lounge/_index.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Introduction", name: "body", widget: "markdown"}
-
-      - name: "gallery_hub"
-        label: "Gallery Hub (Main Page)"
-        file: "content/gallery/_index.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Welcome Text", name: "body", widget: "markdown"}
-
-  - name: "club_info"
-    label: "Club Information"
-    folder: "content/club-info"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Type", name: "type", widget: "hidden", default: "page"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-
-  - name: "breed"
-    label: "The Breed"
-    folder: "content/breed"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Type", name: "type", widget: "hidden", default: "page"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-
-  - name: "community_pages"
-    label: "Community Pages"
-    folder: "content/community"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Type", name: "type", widget: "hidden", default: "page"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-
-  - name: "committee"
-    label: "Committee Members"
-    folder: "content/committee"
-    create: true
-    slug: "{{slug}}"
-    summary: "{{title}} - {{role}}"
-    fields:
-      - {label: "Full Name", name: "title", widget: "string"}
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options: 
-          - {label: "High Council (Top Officers)", value: "high_council"}
-          - {label: "The Outpost Sentinels (Specialist Roles)", value: "outpost"}
-          - {label: "The Watchdogs (General Committee)", value: "watchdog"}
-        default: "watchdog"
-      - label: "Official Role & Fun Title"
-        name: "designation"
-        widget: "relation"
-        collection: "settings"
-        file: "designations"
-        search_fields: ["roles.*.official_role", "roles.*.fun_role"]
-        value_field: "roles.*.official_role"
-        display_fields: ["roles.*.official_role", "roles.*.fun_role"]
-        hint: "Select the designation mapping."
-      - {label: "Profile Photo", name: "image", widget: "image", required: false}
-      - {label: "Bio / Description (Optional)", name: "body", widget: "markdown", required: false}
-      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
-
+  # 1. GLOBAL SETTINGS
   - name: "settings"
     label: "Global Settings"
     delete: false
@@ -223,10 +73,210 @@ collections:
               - {label: "Fun Title", name: "fun_role", widget: "string"}
               - {label: "Mission Statement", name: "mission", widget: "string"}
 
-  - name: "lounge"
-    label: "The Lounge (Posts)"
+  # 2. MAIN PAGES (HUBS & LANDING)
+  - name: "pages"
+    label: "Main Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "content/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Layout", name: "layout", widget: "hidden", default: "hero"}
+          - {label: "URL (Should be /)", name: "url", widget: "string", default: "/"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "calendar"
+        label: "Shows & Events"
+        file: "content/calendar/index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "news_hub"
+        label: "News Landing (Hub)"
+        file: "content/news/_index.md"
+        fields:
+          - {label: "Title (Should be Latest News)", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "gallery_hub"
+        label: "Gallery Hub"
+        file: "content/gallery/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Welcome Text", name: "body", widget: "markdown"}
+
+      - name: "breed_hub"
+        label: "The Breed Intro"
+        file: "content/breed/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "club_info_hub"
+        label: "Club Info Intro"
+        file: "content/club-info/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "judges"
+        label: "Judges (Education)"
+        file: "content/education/index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "community_hub"
+        label: "Community Hub"
+        file: "content/community/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "breeders_hub"
+        label: "Breeders Landing"
+        file: "content/community/breeders/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - name: "lounge_intro"
+        label: "Member's Lounge Intro"
+        file: "content/community/lounge/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Introduction", name: "body", widget: "markdown"}
+
+  # 3. SITE CONTENT (MULTI-ENTRY)
+  - name: "announcements"
+    label: "News & Updates"
+    folder: "content/news"
+    create: true
+    extension: "md"
+    format: "yaml-frontmatter"
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "gallery_albums"
+    label: "Photo Albums"
+    folder: "content/gallery"
+    filter: {field: "type", value: "page"}
+    path: "{{slug}}/index"
+    preview_path: "gallery/{{slug}}"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "featureImage", widget: "image", required: false, hint: "Choose the main photo to display on the gallery overview page."}
+      - {label: "Cloudinary Tag", name: "cloudinary_tag", widget: "string", required: false, hint: "Tag used for Cloudinary images (e.g. noelac-heritage)."}
+      - {label: "Description/Text", name: "body", widget: "markdown", required: false}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "committee"
+    label: "Committee Members"
+    folder: "content/committee"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} - {{role}}"
+    fields:
+      - {label: "Full Name", name: "title", widget: "string"}
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: 
+          - {label: "High Council (Top Officers)", value: "high_council"}
+          - {label: "The Outpost Sentinels (Specialist Roles)", value: "outpost"}
+          - {label: "The Watchdogs (General Committee)", value: "watchdog"}
+        default: "watchdog"
+      - label: "Official Role & Fun Title"
+        name: "designation"
+        widget: "relation"
+        collection: "settings"
+        file: "designations"
+        search_fields: ["roles.*.official_role", "roles.*.fun_role"]
+        value_field: "roles.*.official_role"
+        display_fields: ["roles.*.official_role", "roles.*.fun_role"]
+        hint: "Select the designation mapping."
+      - {label: "Profile Photo", name: "image", widget: "image", required: false}
+      - {label: "Bio / Description (Optional)", name: "body", widget: "markdown", required: false}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "breeders"
+    label: "Breeder Directory"
+    folder: "content/community/breeders"
+    filter: {field: "type", value: "breeders"}
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Kennel Name (Affix)", name: "title", widget: "string"}
+      - {label: "Date Listed / Updated", name: "date", widget: "datetime"}
+      - {label: "Type", name: "type", widget: "hidden", default: "breeders"}
+      - {label: "Owner Name", name: "owner", widget: "string"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "Phone", name: "phone", widget: "string", required: false}
+      - {label: "Puppies Available?", name: "puppies_available", widget: "boolean", default: false, required: false}
+      - label: "Number of Puppies"
+        name: "puppies_count"
+        widget: "number"
+        required: false
+        min: 1
+        value_type: "int"
+        hint: "Leave blank if no puppies are available."
+      - {label: "Additional Notes", name: "body", widget: "markdown", required: false}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "breed_articles"
+    label: "The Breed Articles"
+    folder: "content/breed"
+    filter: {field: "type", value: "page"}
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "club_info_pages"
+    label: "Club Info Sections"
+    folder: "content/club-info"
+    filter: {field: "type", value: "page"}
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "community_pages"
+    label: "Other Community Pages"
+    folder: "content/community"
+    filter: {field: "type", value: "page"}
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first."}
+
+  - name: "lounge_posts"
+    label: "The Lounge Posts"
     folder: "content/community/lounge"
     create: true
+    extension: "md"
+    format: "yaml-frontmatter"
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}

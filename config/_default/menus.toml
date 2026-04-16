@@ -30,7 +30,7 @@
 
 [[main]]
   name = "News"
-  url = "/blog/"
+  url = "/news/"
   weight = 25
 
 [[main]]
