@@ -2,70 +2,85 @@
 {{ $cloud_name := .Get "cloud_name" | default "di1qnuy5r" }}
 {{ $show_captions := .Get "show_captions" | default "false" }}
 {{ $url := printf "https://res.cloudinary.com/%s/image/list/%s.json" $cloud_name $tag }}
+{{ $gallery_id := printf "cloudinary-%d" .Ordinal }}
 
-<div class="pswp-gallery scrapbook-grid not-prose" id="cloudinary-{{ .Ordinal }}">
-  {{ with resources.GetRemote $url }}
-  {{ with .Content | transform.Unmarshal }}
-  {{ range .resources }}
-  {{/* Calculate proportional dimensions for data-pswp attributes */}}
-  {{ $max_w := 1000.0 }}
-  {{ $ratio := div $max_w .width }}
-  {{ $display_w := $max_w }}
-  {{ $display_h := mul .height $ratio }}
-
-  {{/* Optimized Full Image for Lightbox */}}
-  {{ $full_url := printf "https://res.cloudinary.com/%s/image/upload/c_limit,w_1000,f_auto,q_auto,t_branding/%s.%s" $cloud_name .public_id .format }}
-  {{/* Square 600x600 Thumbnail */}}
-  {{ $thumb_url := printf "https://res.cloudinary.com/%s/image/upload/c_fill,g_auto,w_600,h_600,f_auto,q_auto,t_branding/%s.%s" $cloud_name .public_id .format }}
-
-  <div class="scrapbook-item">
-    <div class="scrapbook-photo-frame">
-      <a href="{{ $full_url }}" data-pswp-width="{{ $display_w }}" data-pswp-height="{{ $display_h }}" target="_blank"
-        class="block overflow-hidden transition-shadow">
-        <img src="{{ $thumb_url }}" alt="Cloudinary Image" loading="lazy" class="w-full h-full object-cover">
-      </a>
-      {{ if eq $show_captions "true" }}
-      {{ $custom_title := "" }}
-      {{ $pid := .public_id }}
-      {{ with site.Data.gallery_metadata }}
-      {{ $custom_title = index . $pid }}
-      {{ end }}
-
-      {{ $fallback_title := .public_id | path.Base }}
-      {{ $clean_title := replace $fallback_title $tag "" }}
-      {{ $clean_title = replace $clean_title "_" " " }}
-      {{ $clean_title = replace $clean_title "-" " " }}
-      {{ $clean_title = $clean_title | title | trim " " }}
-
-      <span class="scrapbook-caption">
-        {{ if $custom_title }}
-        {{ $custom_title }}
-        {{ else if $clean_title }}
-        {{ $clean_title }}
-        {{ else }}
-        {{ $fallback_title | title }}
-        {{ end }}
-      </span>
-      {{ end }}
-    </div>
-  </div>
-  {{ end }}
-  {{ end }}
-  {{ else }}
-  <p class="text-center text-red-500">The imagery archives are temporarily unreachable.</p>
-  {{ end }}
-</div>
-
-{{ if not (.Page.Scratch.Get "pswp_init") }}
-  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css">
-  <script type="module">
-    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.2/dist/photoswipe-lightbox.esm.js';
+{{/* 1. ASSETS - Direct inclusion for maximum reliability */}}
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css">
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.2/dist/photoswipe-lightbox.esm.js';
+  
+  const init = () => {
     const lightbox = new PhotoSwipeLightbox({
-      gallery: '.pswp-gallery',
+      gallery: '#{{ $gallery_id }}',
       children: 'a',
       pswpModule: () => import('https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.esm.js')
     });
     lightbox.init();
-  </script>
-  {{ .Page.Scratch.Set "pswp_init" true }}
-{{ end }}
+    console.log("PhotoSwipe initialized for gallery: {{ $gallery_id }}");
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+
+<div class="pswp-gallery scrapbook-grid not-prose" id="{{ $gallery_id }}">
+  {{ with resources.GetRemote $url }}
+    {{ with .Content | transform.Unmarshal }}
+      {{ range .resources }}
+        {{/* Dimensions */}}
+        {{ $max_w := 1200.0 }}
+        {{ $ratio := div $max_w .width }}
+        {{ $display_w := $max_w }}
+        {{ $display_h := mul .height $ratio }}
+
+        {{/* Cloudinary URLs */}}
+        {{ $full_url := printf "https://res.cloudinary.com/%s/image/upload/c_limit,w_1200,f_auto,q_auto/%s.%s" $cloud_name .public_id .format }}
+        {{ $thumb_url := printf "https://res.cloudinary.com/%s/image/upload/c_fill,g_auto,w_600,h_600,f_auto,q_auto/%s.%s" $cloud_name .public_id .format }}
+
+        <div class="scrapbook-item">
+          <div class="scrapbook-photo-frame">
+            <a href="{{ $full_url }}" 
+               data-pswp-width="{{ printf "%.0f" $display_w }}" 
+               data-pswp-height="{{ printf "%.0f" $display_h }}" 
+               target="_blank"
+               class="block overflow-hidden">
+              <img src="{{ $thumb_url }}" alt="Gallery Image" loading="lazy" class="w-full h-full object-cover">
+            </a>
+            
+            {{ if eq $show_captions "true" }}
+              {{/* CAPTION LOGIC */}}
+              {{ $caption := "" }}
+              
+              {{/* Use Cloudinary metadata if available */}}
+              {{ if .context }}
+                {{ if .context.custom }}
+                  {{ $caption = .context.custom.caption | default .context.custom.alt }}
+                {{ end }}
+              {{ end }}
+              
+              {{ if not $caption }}
+                {{/* Clean up filename */}}
+                {{ $raw := .public_id | path.Base }}
+                {{/* Remove random hash suffix (e.g. _gkmjyo) */}}
+                {{ $cleaned := replaceRE `_[a-z0-9]{6,8}$` "" $raw }}
+                {{/* Replace separators */}}
+                {{ $cleaned = replace $cleaned "_" " " }}
+                {{ $cleaned = replace $cleaned "-" " " }}
+                {{ $caption = $cleaned | title }}
+              {{ end }}
+              
+              <span class="scrapbook-caption">
+                {{ $caption | safeHTML }}
+              </span>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    <p class="text-secondary-500">The imagery archives are temporarily unreachable.</p>
+  {{ end }}
+</div>

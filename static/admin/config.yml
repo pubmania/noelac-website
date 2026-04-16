@@ -99,6 +99,13 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Introduction", name: "body", widget: "markdown"}
 
+      - name: "gallery_hub"
+        label: "Gallery Hub (Main Page)"
+        file: "content/gallery/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Welcome Text", name: "body", widget: "markdown"}
+
   - name: "club_info"
     label: "Club Information"
     folder: "content/club-info"
