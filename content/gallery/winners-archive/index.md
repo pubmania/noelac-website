@@ -8,4 +8,4 @@ cloudinary_tag: "winners-archive"
 ---
 Winners of various championship shows since 2013.
 
-{{< cloudinary-gallery tag="winners-archive" show_captions="true" >}}
+{{< cloudinary-gallery tag="winners-archive" show_captions="true" watermark="true" >}}

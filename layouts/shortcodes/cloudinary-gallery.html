@@ -1,6 +1,7 @@
 {{ $tag := .Get "tag" | default "noelac-heritage" }}
 {{ $cloud_name := .Get "cloud_name" | default "di1qnuy5r" }}
 {{ $show_captions := .Get "show_captions" | default "false" }}
+{{ $watermark := .Get "watermark" | default "false" }}
 {{ $url := printf "https://res.cloudinary.com/%s/image/list/%s.json" $cloud_name $tag }}
 {{ $gallery_id := printf "cloudinary-%d" .Ordinal }}
 
@@ -31,14 +32,34 @@
             if (currSlideElement) {
               captionHTML = currSlideElement.getAttribute('data-pswp-caption-content');
             }
-            el.innerHTML = captionHTML || '';
+            if (captionHTML) {
+              el.innerHTML = captionHTML;
+              el.style.display = 'block';
+            } else {
+              el.innerHTML = '';
+              el.style.display = 'none';
+            }
           });
         }
       });
+      
+      {{ if eq $watermark "true" }}
+      // Register watermark logo
+      lightbox.pswp.ui.registerElement({
+        name: 'watermark',
+        order: 11,
+        isButton: false,
+        appendTo: 'root',
+        html: '', // Handled by CSS class
+        onInit: (el, pswp) => {
+          el.classList.add('pswp__watermark');
+        }
+      });
+      {{ end }}
     });
 
     lightbox.init();
-    console.log("PhotoSwipe with captions initialized for gallery: {{ $gallery_id }}");
+    console.log("PhotoSwipe with captions and support for watermarks initialized for gallery: {{ $gallery_id }}");
   };
 
   if (document.readyState === 'loading') {
@@ -63,7 +84,7 @@
         {{ $thumb_url := printf "https://res.cloudinary.com/%s/image/upload/c_fill,g_auto,w_600,h_600,f_auto,q_auto/%s.%s" $cloud_name .public_id .format }}
 
         <div class="scrapbook-item">
-          <div class="scrapbook-photo-frame">
+          <div class="scrapbook-photo-frame {{ if eq $watermark "true" }}has-watermark{{ end }}">
             {{/* PRE-CALCULATE CAPTION FOR LIGHTBOX */}}
             {{ $caption := "" }}
             {{ if .context }}
@@ -82,7 +103,7 @@
             <a href="{{ $full_url }}" 
                data-pswp-width="{{ printf "%.0f" $display_w }}" 
                data-pswp-height="{{ printf "%.0f" $display_h }}" 
-               data-pswp-caption-content="{{ $caption }}"
+               {{ if eq $show_captions "true" }}data-pswp-caption-content="{{ $caption }}"{{ end }}
                target="_blank"
                class="block overflow-hidden transition-shadow">
               <img src="{{ $thumb_url }}" alt="{{ $caption }}" loading="lazy" class="w-full h-full object-cover">

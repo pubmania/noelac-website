@@ -1,6 +1,8 @@
 {{ $dir := .Get "dir" }}
 {{ $show_captions := .Get "show_captions" | default "false" }}
+{{ $watermark := .Get "watermark" | default "true" }}
 {{ $images := "" }}
+{{ $gallery_id := printf "gallery-%d" .Ordinal }}
 
 {{ if $dir }}
   {{ $images = (resources.Match (printf "%s/*" $dir)) }}
@@ -8,48 +10,100 @@
   {{ $images = .Page.Resources.ByType "image" }}
 {{ end }}
 
-<div class="pswp-gallery scrapbook-grid not-prose" id="gallery-{{ .Ordinal }}">
+{{/* 1. ASSETS */}}
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css">
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.2/dist/photoswipe-lightbox.esm.js';
+  
+  const init = () => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#{{ $gallery_id }}',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.esm.js')
+    });
+
+    // Register custom caption element
+    lightbox.on('uiRegister', function() {
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'root',
+        html: 'Caption',
+        onInit: (el, pswp) => {
+          pswp.on('change', () => {
+            const currSlideElement = pswp.currSlide.data.element;
+            let captionHTML = '';
+            if (currSlideElement) {
+              captionHTML = currSlideElement.getAttribute('data-pswp-caption-content');
+            }
+            if (captionHTML) {
+              el.innerHTML = captionHTML;
+              el.style.display = 'block';
+            } else {
+              el.innerHTML = '';
+              el.style.display = 'none';
+            }
+          });
+        }
+      });
+      
+      {{ if eq $watermark "true" }}
+      // Register watermark logo
+      lightbox.pswp.ui.registerElement({
+        name: 'watermark',
+        order: 11,
+        isButton: false,
+        appendTo: 'root',
+        html: '', // Handled by CSS class
+        onInit: (el, pswp) => {
+          el.classList.add('pswp__watermark');
+        }
+      });
+      {{ end }}
+    });
+
+    lightbox.init();
+    console.log("PhotoSwipe initialized for gallery: {{ $gallery_id }}");
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+
+<div class="pswp-gallery scrapbook-grid not-prose" id="{{ $gallery_id }}">
   {{ range $images }}
+    {{/* PRE-CALCULATE CAPTION */}}
+    {{ $title := .Name | path.Base }}
+    {{ $title = replace $title (path.Ext $title) "" }}
+    {{ $title = replace $title "_" " " }}
+    {{ $title = replace $title "-" " " }}
+    {{ $final_title := $title | title }}
+
     <div class="scrapbook-item">
-      <div class="scrapbook-photo-frame has-watermark">
+      <div class="scrapbook-photo-frame {{ if eq $watermark "true" }}has-watermark{{ end }}">
         <a href="{{ .RelPermalink }}" 
            data-pswp-width="{{ .Width }}" 
            data-pswp-height="{{ .Height }}" 
+           {{ if eq $show_captions "true" }}data-pswp-caption-content="{{ $final_title }}"{{ end }}
            target="_blank"
            class="block overflow-hidden transition-shadow">
           {{ $thumbnail := .Fill "800x800 Center" }}
           <img 
             src="{{ $thumbnail.RelPermalink }}" 
-            alt="{{ .Name }}" 
+            alt="{{ $final_title }}" 
             loading="lazy"
             class="w-full h-full object-cover">
         </a>
         {{ if eq $show_captions "true" }}
-          {{ $title := .Name | path.Base }}
-          {{ $title = replace $title (path.Ext $title) "" }}
-          {{ $title = replace $title "_" " " }}
-          {{ $title = replace $title "-" " " }}
-          {{ if $title }}
-            <span class="scrapbook-caption">
-              {{ $title | title }}
-            </span>
-          {{ end }}
+          <span class="scrapbook-caption">
+            {{ $final_title }}
+          </span>
         {{ end }}
       </div>
     </div>
   {{ end }}
 </div>
-
-{{ if not (.Page.Scratch.Get "pswp_init") }}
-  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css">
-  <script type="module">
-    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.2/dist/photoswipe-lightbox.esm.js';
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '.pswp-gallery',
-      children: 'a',
-      pswpModule: () => import('https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.esm.js')
-    });
-    lightbox.init();
-  </script>
-  {{ .Page.Scratch.Set "pswp_init" true }}
-{{ end }}

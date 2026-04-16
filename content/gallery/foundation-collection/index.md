@@ -10,4 +10,4 @@ description: "Reliving the first fifteen years of the North of England Lhasa Aps
 
 Reliving the first fifteen years of the North of England Lhasa Apso Club (1991–2006). These scanned archival photos capture our inaugural meetings, early shows, and the community that built the club we know today.
 
-{{< cloudinary-gallery tag="noelac-heritage" >}}
+{{< cloudinary-gallery tag="noelac-heritage" watermark="true" >}}

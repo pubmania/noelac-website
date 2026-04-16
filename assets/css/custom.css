@@ -690,6 +690,21 @@ html:not(.dark) .pswp__button svg {
   font-weight: 800;
 }
 
+/* 16. PHOTOSWIPE WATERMARK */
+.pswp__watermark {
+  position: absolute;
+  right: 20px;
+  bottom: 60px; /* Positioned above the caption bar */
+  width: 60px;
+  height: 60px;
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1000;
+}
+
 .scrapbook-card-frame:hover .scrapbook-card-photo img {
   transform: scale(1.1) !important;
 }
