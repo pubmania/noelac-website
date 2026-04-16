@@ -652,6 +652,22 @@ html.dark [role="dialog"] span {
   z-index: 10 !important;
 }
 
+/* 14. PHOTOSWIPE BRANDING */
+.pswp {
+  --pswp-icon-color: rgb(var(--color-primary-600)) !important;
+  --pswp-icon-color-secondary: rgb(var(--color-primary-200)) !important;
+}
+
+html:not(.dark) .pswp__button svg {
+  color: rgb(var(--color-primary-600)) !important;
+  fill: rgb(var(--color-primary-600)) !important;
+}
+
+.pswp__button:hover svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
 .scrapbook-card-frame:hover .scrapbook-card-photo img {
   transform: scale(1.1) !important;
 }
