@@ -2,6 +2,7 @@
 {{ $cloud_name := .Get "cloud_name" | default "di1qnuy5r" }}
 {{ $show_captions := .Get "show_captions" | default "false" }}
 {{ $watermark := .Get "watermark" | default "false" }}
+{{ $sort_order := .Get "sort" | default "desc" }}
 {{ $url := printf "https://res.cloudinary.com/%s/image/list/%s.json" $cloud_name $tag }}
 {{ $gallery_id := printf "cloudinary-%d" .Ordinal }}
 
@@ -72,34 +73,53 @@
 <div class="pswp-gallery scrapbook-grid not-prose" id="{{ $gallery_id }}">
   {{ with resources.GetRemote $url }}
     {{ with .Content | transform.Unmarshal }}
+      {{/* PRE-PROCESS FOR SORTING */}}
+      {{ $processed_resources := slice }}
       {{ range .resources }}
+        {{ $caption := "" }}
+        {{ if .context }}
+          {{ if .context.custom }}
+            {{ $caption = .context.custom.caption | default .context.custom.alt }}
+          {{ end }}
+        {{ end }}
+        {{ if not $caption }}
+          {{ $raw := .public_id | path.Base }}
+          {{ $cleaned := replaceRE `_[a-z0-9]{6,8}$` "" $raw }}
+          {{ $cleaned = replace $cleaned "_" " " }}
+          {{ $cleaned = replace $cleaned "-" " " }}
+          {{ $caption = $cleaned | title }}
+        {{ end }}
+
+        {{/* SMART SORT KEY: Extract year to ensure chronological order */}}
+        {{ $sort_key := $caption }}
+        {{ $years := findRE "[0-9]{4}" $caption 1 }}
+        {{ if $years }}
+          {{ $sort_key = printf "%s-%s" (index $years 0) $caption }}
+        {{ else }}
+          {{/* If no year found, put it at the bottom in descending sort */}}
+          {{ $sort_key = printf "0000-%s" $caption }}
+        {{ end }}
+
+        {{ $processed_resources = $processed_resources | append (dict "resource" . "caption" $caption "sort_key" $sort_key) }}
+      {{ end }}
+
+      {{/* RENDER SORTED */}}
+      {{ range sort $processed_resources "sort_key" $sort_order }}
+        {{ $res := .resource }}
+        {{ $caption := .caption }}
+
         {{/* Dimensions */}}
         {{ $max_w := 1200.0 }}
-        {{ $ratio := div $max_w .width }}
+        {{ $ratio := div $max_w $res.width }}
         {{ $display_w := $max_w }}
-        {{ $display_h := mul .height $ratio }}
+        {{ $display_h := mul $res.height $ratio }}
 
         {{/* Cloudinary URLs */}}
-        {{ $full_url := printf "https://res.cloudinary.com/%s/image/upload/c_limit,w_1200,f_auto,q_auto/%s.%s" $cloud_name .public_id .format }}
-        {{ $thumb_url := printf "https://res.cloudinary.com/%s/image/upload/c_fill,g_auto,w_600,h_600,f_auto,q_auto/%s.%s" $cloud_name .public_id .format }}
+        {{ $full_url := printf "https://res.cloudinary.com/%s/image/upload/c_limit,w_1200,f_auto,q_auto/%s.%s" $cloud_name $res.public_id $res.format }}
+        {{ $thumb_url := printf "https://res.cloudinary.com/%s/image/upload/c_fill,g_auto,w_600,h_600,f_auto,q_auto/%s.%s" $cloud_name $res.public_id $res.format }}
 
         <div class="scrapbook-item">
           <div class="scrapbook-photo-frame {{ if eq $watermark "true" }}has-watermark{{ end }}">
-            {{/* PRE-CALCULATE CAPTION FOR LIGHTBOX */}}
-            {{ $caption := "" }}
-            {{ if .context }}
-              {{ if .context.custom }}
-                {{ $caption = .context.custom.caption | default .context.custom.alt }}
-              {{ end }}
-            {{ end }}
-            {{ if not $caption }}
-              {{ $raw := .public_id | path.Base }}
-              {{ $cleaned := replaceRE `_[a-z0-9]{6,8}$` "" $raw }}
-              {{ $cleaned = replace $cleaned "_" " " }}
-              {{ $cleaned = replace $cleaned "-" " " }}
-              {{ $caption = $cleaned | title }}
-            {{ end }}
-
             <a href="{{ $full_url }}" 
                data-pswp-width="{{ printf "%.0f" $display_w }}" 
                data-pswp-height="{{ printf "%.0f" $display_h }}" 
