@@ -44,19 +44,20 @@
         }
       });
       
-      {{ if eq $watermark "true" }}
-      // Register watermark logo
-      lightbox.pswp.ui.registerElement({
-        name: 'watermark',
-        order: 11,
-        isButton: false,
-        appendTo: 'root',
-        html: '', // Handled by CSS class
-        onInit: (el, pswp) => {
-          el.classList.add('pswp__watermark');
-        }
-      });
-      {{ end }}
+      const watermarkEnabled = JSON.parse('{{ eq $watermark "true" | jsonify }}');
+      if (watermarkEnabled) {
+        // Register watermark logo
+        lightbox.pswp.ui.registerElement({
+          name: 'watermark',
+          order: 11,
+          isButton: false,
+          appendTo: 'root',
+          html: '', // Handled by CSS class
+          onInit: (el, pswp) => {
+            el.classList.add('pswp__watermark');
+          }
+        });
+      }
     });
 
     lightbox.init();
