@@ -11,7 +11,7 @@ We are thrilled to share that one of our very own, the lovely Muffin, made her t
 The opportunity arose through a close friend who coordinates the animal actors for the show. When the production team reached out looking for a "well-behaved, fluffy dog" for a specific scene, Muffin was put forward as the perfect candidate. After a successful trial at ringcraft to ensure she was camera-ready, she was officially selected for her role.
 
 ### A Key Role in the Drama
-Fans of the show might remember the intense storyline where the character **Gary Windass** was attacked and subsequently discovered by a man walking his dog. That pivotal "discovery dog" was none other than our sweet Muffin! 
+Fans of the show might remember the intense storyline where the character **Gary Windass** was attacked and subsequently discovered by a man walking his dog. That "little dog" was none other than our sweet Muffin! 
 
 Muffin lived up to her reputation as the sweetest, kindest little girl throughout the shoot. The cast and crew were reportedly smitten with her, and she handled the busy environment of a professional television set with total grace.
 
