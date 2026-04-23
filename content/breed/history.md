@@ -1,10 +1,10 @@
 ---
-title: "A Brief History of the Lhasa Apso"
+title: A Brief History of the Lhasa Apso
 showTableOfContents: true
 date: 2026-04-08
 weight: 30
-layout: "page"
-type: "page"
+layout: page
+type: page
 ---
 
 The Lhasa Apso is an ancient breed with a sacred and noble history spanning over 2,000 years. Developed in the high-altitude monasteries and palaces of Tibet, these "Bark Lion Sentinel Dogs" were bred to provide protection and companionship to the highest levels of Tibetan society.
@@ -37,7 +37,6 @@ While the breed reached the UK early, its establishment in the United States is 
 ## Historical References & Attribution
 The history of the Lhasa Apso is documented through official kennel club records and breed historians:
 - **The Kennel Club (UK)**: [Breed Standard & History](https://www.thekennelclub.org.uk/breed-standards/utility/lhasa-apso/)
-- **Lhasa Apso Breed Council (UK)**: [Breed History Archives](https://www.lhasaapsocouncil.org/)
 - **The American Kennel Club (AKC)**: [Breed History Page](https://www.akc.org/dog-breeds/lhasa-apso/)
 
 > [!tip] Action
