@@ -83,6 +83,7 @@ collections:
         fields:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Layout", name: "layout", widget: "hidden", default: "hero"}
+          - {label: "Hero Image", name: "homepageImage", widget: "image", required: false}
           - {label: "URL (Should be /)", name: "url", widget: "string", default: "/"}
           - {label: "Body", name: "body", widget: "markdown"}
 
