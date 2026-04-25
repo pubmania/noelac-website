@@ -1,7 +1,8 @@
 ---
-title: "North of England Lhasa Apso Club"
-url: "/"
-layout: "hero"
+title: North of England Lhasa Apso Club
+layout: hero
+homepageImage: /uploads/8436.jpg
+url: /
 ---
 {{< typeit 
   tag=h2
