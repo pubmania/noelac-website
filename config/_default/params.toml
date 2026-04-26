@@ -1,7 +1,6 @@
 disableTextInHeader = true
 colorScheme = "noelac"
 logo = "logo.webp"
-secondaryLogo = "logo.png"
 
 [calendar_config]
 calendar_provider = "google"
