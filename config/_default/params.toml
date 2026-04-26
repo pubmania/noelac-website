@@ -42,7 +42,7 @@ link = "https://youtube.com"
 
 [homepage]
 layout = "hero"
-homepageImage = "20260402_115338(1).jpg"
+homepageImage = "hero.jpg"
 showRecentPosts = true
 
 [article]
